@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-public class FirstTest {
+public class PrichislovMenu721Test {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
