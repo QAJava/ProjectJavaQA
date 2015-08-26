@@ -3,7 +3,6 @@ package telran.com;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -24,12 +23,27 @@ public class PrichislovMenu888Test {
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
+        driver.get(baseUrl);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    }
+    @Test
+    public void test986Yacov() throws Exception {
+
+        new Select(driver.findElement(By.id("days"))).selectByVisibleText("вторник");
+        // driver.findElement(By.xpath("//select[@id='days']/option[3]")).click();
+        driver.findElement(By.xpath("(//input[@type='checkbox'])[5]")).click();
+        driver.findElement(By.xpath("(//input[@type='checkbox'])[6]")).click();
+        driver.findElement(By.id("makeOrder")).click();
+        Thread.sleep(2000);
+        try {
+            assertTrue(isElementPresent(By.xpath("//*[@id='history']/li[last()][contains(text(),'163')]")));
+        } catch (Error e) {
+            verificationErrors.append(e.toString());
+        }
     }
 
     @Test
     public void testPrichislovMenu888() throws Exception {
-        driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
         new Select(driver.findElement(By.id("days"))).selectByVisibleText("среда");
         driver.findElement(By.xpath("(//input[@type='checkbox'])[5]")).click();
         driver.findElement(By.xpath("(//input[@type='checkbox'])[6]")).click();
@@ -53,7 +67,7 @@ public class PrichislovMenu888Test {
         }
     }
 
-    @AfterClass
+    @AfterTest
     public void tearDown() throws Exception {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
