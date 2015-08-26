@@ -1,13 +1,19 @@
 package telran.com;
 
-import java.util.regex.Pattern;
-import java.util.concurrent.TimeUnit;
-import org.junit.*;
-import static org.junit.Assert.*;
+
+
 import static org.hamcrest.CoreMatchers.*;
+import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.fail;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
 
 public class PrichislovMenu888Test {
     private WebDriver driver;
@@ -15,7 +21,7 @@ public class PrichislovMenu888Test {
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
-    @Before
+    @BeforeTest
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
@@ -48,7 +54,7 @@ public class PrichislovMenu888Test {
         }
     }
 
-    @After
+    @AfterClass
     public void tearDown() throws Exception {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
