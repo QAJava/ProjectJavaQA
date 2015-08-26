@@ -31,7 +31,7 @@ public void setUp() throws Exception {
 
 @Test
 public void test986Yacov() throws Exception {
-        driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
+        driver.get(baseUrl);
         new Select(driver.findElement(By.id("days"))).selectByVisibleText("вторник");
        // driver.findElement(By.xpath("//select[@id='days']/option[3]")).click();
         driver.findElement(By.xpath("(//input[@type='checkbox'])[5]")).click();
