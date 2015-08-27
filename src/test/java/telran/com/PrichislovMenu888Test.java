@@ -26,7 +26,7 @@ public class PrichislovMenu888Test {
         driver.get(baseUrl);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
-    @Test
+   @Test
     public void test986Yacov() throws Exception {
 
         new Select(driver.findElement(By.id("days"))).selectByVisibleText("вторник");
@@ -42,7 +42,7 @@ public class PrichislovMenu888Test {
         }
     }
 
-    @Test
+   // @Test
     public void testPrichislovMenu888() throws Exception {
         new Select(driver.findElement(By.id("days"))).selectByVisibleText("среда");
         driver.findElement(By.xpath("(//input[@type='checkbox'])[5]")).click();

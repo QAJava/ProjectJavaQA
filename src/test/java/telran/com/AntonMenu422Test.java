@@ -5,14 +5,16 @@ package telran.com;
  */
 
 
-        import java.util.regex.Pattern;
-        import java.util.concurrent.TimeUnit;
-        import org.junit.*;
-        import static org.junit.Assert.*;
-        import static org.hamcrest.CoreMatchers.*;
-        import org.openqa.selenium.*;
-        import org.openqa.selenium.firefox.FirefoxDriver;
-        import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.*;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
+
+import static org.testng.Assert.*;
 
 public class AntonMenu422Test {
     private WebDriver driver;
@@ -20,16 +22,16 @@ public class AntonMenu422Test {
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
-    @Before
+    @BeforeTest
     public void setUp() throws Exception {
-        driver = new FirefoxDriver();
-        baseUrl = "https://addons.mozilla.org/";
+        driver = new InternetExplorerDriver();
+        baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @Test
     public void testMenu422() throws Exception {
-        driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
+        driver.get(baseUrl);
         new Select(driver.findElement(By.id("days"))).selectByVisibleText("среда");
         try {
             assertFalse(driver.findElement(By.xpath("(//input[@type='checkbox'])[5]")).isSelected());
@@ -71,15 +73,15 @@ public class AntonMenu422Test {
         }
 
         try {
-            assertEquals("303", driver.findElement(By.id("orderSum")).getText());
+            assertEquals("303", driver.findElement(By.id("orderSum")).getText(),"Sum is not equal to what was expeced");
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
-        try {
+       /* try {
             assertTrue(isElementPresent(By.xpath("//span[@id='orderSum'][contains(text(),'303')]")));
         } catch (Error e) {
             verificationErrors.append(e.toString());
-        }
+        }*/
         driver.findElement(By.id("makeOrder")).click();
         try {
             assertTrue(isElementPresent(By.xpath("//*[@id='history']/li[last()][contains(text(),'каша пшеная, отбивная из курицы, хлеб.')]")));
@@ -88,7 +90,7 @@ public class AntonMenu422Test {
         }
     }
 
-    @After
+    @AfterTest(alwaysRun = true)
     public void tearDown() throws Exception {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
