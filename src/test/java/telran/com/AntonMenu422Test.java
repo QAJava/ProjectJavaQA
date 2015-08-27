@@ -22,7 +22,7 @@ public class AntonMenu422Test {
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
-    @BeforeTest
+    @BeforeTest(alwaysRun = true)
     public void setUp() throws Exception {
         driver = new InternetExplorerDriver();
         baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
@@ -73,7 +73,7 @@ public class AntonMenu422Test {
         }
 
         try {
-            assertEquals("303", driver.findElement(By.id("orderSum")).getText(),"Sum is not equal to what was expeced");
+            assertEquals("303", driver.findElement(By.id("orderSum")).getText(), "Sum is not equal to what was expeced");
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
