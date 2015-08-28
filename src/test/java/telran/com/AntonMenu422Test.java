@@ -6,6 +6,7 @@ package telran.com;
 
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterTest;
@@ -24,14 +25,13 @@ public class AntonMenu422Test {
 
     @BeforeTest(alwaysRun = true)
     public void setUp() throws Exception {
-        driver = new InternetExplorerDriver();
-        baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
+        driver = new FirefoxDriver();
+        baseUrl = "https://addons.mozilla.org/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
-
     @Test
     public void testMenu422() throws Exception {
-        driver.get(baseUrl);
+        driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
         new Select(driver.findElement(By.id("days"))).selectByVisibleText("среда");
         try {
             assertFalse(driver.findElement(By.xpath("(//input[@type='checkbox'])[5]")).isSelected());
