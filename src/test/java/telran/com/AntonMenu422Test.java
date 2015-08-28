@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.*;
 
 public class AntonMenu422Test {
@@ -29,6 +30,21 @@ public class AntonMenu422Test {
         baseUrl = "https://addons.mozilla.org/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
+    @Test
+    public void testMenu390() throws Exception {
+        driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
+        new Select(driver.findElement(By.id("days"))).selectByVisibleText("понедельник");
+        driver.findElement(By.xpath("//input[@type='checkbox']")).click();
+        driver.findElement(By.xpath("(//input[@type='checkbox'])[3]")).click();
+        driver.findElement(By.xpath("(//input[@type='checkbox'])[4]")).click();
+        driver.findElement(By.id("makeOrder")).click();
+        try {
+            assertTrue(isElementPresent(By.xpath("//*[@id='history']/li[last()][contains(text(),'502 р')]")));
+        } catch (Error e) {
+            verificationErrors.append(e.toString());
+        }
+    }
+
     @Test
     public void testMenu422() throws Exception {
         driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
