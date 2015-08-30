@@ -5,18 +5,35 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import java.io.IOException;
 
 public class HomePage extends Page {
     public String baseUrl;
 
+
+	private WebElement webElement;
+
   @FindBy(how = How.TAG_NAME, using = "h1")
   public WebElement header;
+
+    //Days
+
+    @FindBy(xpath = "//*[@id='menu']/div[@key='1']/div[1]/input")
+    WebElement kashaMannayaMo;
+
 
     //buttons
   @FindBy(xpath = "//*[@id='home_banner_small']//a[@class='landing_button']")
   WebElement freeSignUpButton;
+
+    @FindBy(id = "days")
+	protected WebElement days;
+
+
+
+
 
     //lables
     @FindBy(xpath = "//*[@id='home_banner_small']/h1")
@@ -38,6 +55,12 @@ public class HomePage extends Page {
 
     public HomePage openHomePage() {
         driver.get(PAGE_URL);
+        return this;
+    }
+
+
+    public HomePage selectDay (String day){
+        new Select(days).selectByVisibleText(day);
         return this;
     }
 
