@@ -26,7 +26,7 @@ public class AntonMenu422Test {
     @BeforeTest(alwaysRun = true)
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
-        baseUrl = "https://addons.mozilla.org/";
+        baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
     @Test
