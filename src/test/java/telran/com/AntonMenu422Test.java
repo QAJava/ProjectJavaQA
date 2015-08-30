@@ -7,7 +7,6 @@ package telran.com;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -27,12 +26,12 @@ public class AntonMenu422Test {
     @BeforeTest(alwaysRun = true)
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
-        baseUrl = "https://addons.mozilla.org/";
+        baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
     @Test
     public void testMenu390() throws Exception {
-        driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
+        driver.get(baseUrl);
         new Select(driver.findElement(By.id("days"))).selectByVisibleText("понедельник");
         driver.findElement(By.xpath("//input[@type='checkbox']")).click();
         driver.findElement(By.xpath("(//input[@type='checkbox'])[3]")).click();
