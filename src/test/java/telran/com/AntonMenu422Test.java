@@ -7,7 +7,6 @@ package telran.com;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -33,11 +32,11 @@ public class AntonMenu422Test {
     @Test
     public void testMenu390() throws Exception {
         driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
-        new Select(driver.findElement(By.id("days"))).selectByVisibleText("понедельник");
-        driver.findElement(By.xpath("//input[@type='checkbox']")).click();
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[3]")).click();
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[4]")).click();
-        driver.findElement(By.id("makeOrder")).click();
+        new Select(driver.findElement(By.id("days"))).selectByIndex(6);
+       // driver.findElement(By.xpath("//input[@type='checkbox']")).click();
+       // driver.findElement(By.xpath("(//input[@type='checkbox'])[3]")).click();
+       // driver.findElement(By.xpath("(//input[@type='checkbox'])[4]")).click();
+       // driver.findElement(By.id("makeOrder")).click();
         try {
             assertTrue(isElementPresent(By.xpath("//*[@id='history']/li[last()][contains(text(),'502 р')]")));
         } catch (Error e) {
