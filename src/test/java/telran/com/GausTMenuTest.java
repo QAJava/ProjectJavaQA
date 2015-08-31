@@ -21,7 +21,7 @@ import static org.testng.Assert.fail;
 /**
  * Created by tanyagaus on 8/31/15.
  */
-public class GausTMenu {
+public class GausTMenuTest {
 
     private WebDriver driver;
     private String baseUrl;
