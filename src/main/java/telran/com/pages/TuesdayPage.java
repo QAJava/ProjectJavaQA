@@ -131,10 +131,6 @@ public class TuesdayPage extends Page {
     }
 
 
-//    public HomePage clickOnSignUpDoctorButton() {
-//        clickElement(doctorButton);
-//        return this;
-//    }
 
 
 }
