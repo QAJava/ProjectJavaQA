@@ -46,7 +46,7 @@ public class GausTMenuTest {
         homePage.selectDay("вторник");
         tuesdayPage.clickToSalatCaesar();
         Assert.assertEquals(homePage.getOrderSum(), 82);
-       // tuesdayPage.clickToMakeOrder();
+        homePage.clickToMakeOrder();
 
     }
 

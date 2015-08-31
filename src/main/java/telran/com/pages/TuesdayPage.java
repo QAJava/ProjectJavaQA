@@ -112,7 +112,7 @@ public class TuesdayPage extends Page {
     }
 
    // public HomePage clickToMakeOrder (){
-     //   clickElement(makeOrderButton);
+     //  clickElement(makeOrderButton);
       //  @FindBy(xpath = "//*[@id='history']/li[last()]")
 
        // return currentOrderHistory;}
