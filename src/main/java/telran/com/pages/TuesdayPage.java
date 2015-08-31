@@ -1,11 +1,11 @@
 package telran.com.pages;
 
-        import org.openqa.selenium.WebDriver;
-        import org.openqa.selenium.WebElement;
-        import org.openqa.selenium.support.FindBy;
-        import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-        import java.io.IOException;
+import java.io.IOException;
 /**
  * Created by Anton,Tanya on 8/30/15.
  */
@@ -15,7 +15,9 @@ public class TuesdayPage extends Page {
 
     private WebElement webElement;
 
-    //Days
+    /**
+     * Days of TuesdayPage area
+     */
 
     @FindBy(xpath = "//*[@id='menu']/div[@key='2']/div[1]/input")
     WebElement salatCaesar;
@@ -25,12 +27,24 @@ public class TuesdayPage extends Page {
     WebElement raguSvininy;
     @FindBy(xpath = "//*[@id='menu']/div[@key='2']/div[4]/input")
     WebElement hleb;
-
+    /**
+     * Elements of TuesdayPage area
+     */
     @FindBy(id = "days")
     protected WebElement days;
 
     @FindBy(id = "orderSum")
     protected WebElement orderSum;
+    /**
+     * Button of TuesdayPage area
+     */
+    @FindBy(id = "makeOrder")
+    protected WebElement makeOrderButton;
+    /**
+     * Text element of TuesdayPage area
+     */
+    @FindBy(xpath = "//*[@id='history']/li[last()]")
+    protected WebElement currentOrderHistory;
 
     /**
      *
@@ -97,6 +111,12 @@ public class TuesdayPage extends Page {
         return ordersum;
     }
 
+   // public HomePage clickToMakeOrder (){
+     //   clickElement(makeOrderButton);
+      //  @FindBy(xpath = "//*[@id='history']/li[last()]")
+
+       // return currentOrderHistory;}
+
     /**
      *
      */
@@ -118,3 +138,5 @@ public class TuesdayPage extends Page {
 
 
 }
+
+
