@@ -33,6 +33,7 @@ public class MondayPage extends Page {
 
 
 
+
     public MondayPage(WebDriver driver) {
         super(driver);
         this.PAGE_URL = baseUrl;
@@ -53,6 +54,17 @@ public MondayPage clickToCheckboxKasha(){
         yaichnitsaMo.click();
         return this;
     }
+
+    public MondayPage clickToShvedStolaMo(){
+        shvedStolaMo.click();
+        return this;
+    }
+
+    public MondayPage clickToPlovMo(){
+        plovMo.click();
+        return this;
+    }
+
     public int getOrderSum () {
         int ordersum = 0;
        ordersum = Integer.parseInt(orderSum.getText());

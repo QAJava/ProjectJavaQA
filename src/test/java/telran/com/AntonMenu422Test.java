@@ -29,6 +29,11 @@ public class AntonMenu422Test {
         baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
+
+
+
+
+
     @Test
     public void testMenu390() throws Exception {
         driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");

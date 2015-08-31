@@ -26,13 +26,14 @@ private StringBuffer verificationErrors = new StringBuffer();
         public HomePage homePage;
         public MondayPage mondayPage;
 
-@BeforeTest
+        @BeforeTest
 public void setUp() throws Exception {
-        driver = new FirefoxDriver();
-        baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        homePage = PageFactory.initElements(driver, HomePage.class);
-        mondayPage = PageFactory.initElements(driver, MondayPage.class);
+                driver = new FirefoxDriver();
+                baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
+                driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+                homePage = PageFactory.initElements(driver, HomePage.class);
+                mondayPage = PageFactory.initElements(driver, MondayPage.class);
+
         }
 
 @Test
@@ -40,9 +41,10 @@ public void test986Yacov()  {
         driver.get(baseUrl);
         homePage.selectDay("понедельник");
         mondayPage.clickToEggs();
-        Assert.assertEquals (homePage.getOrderSum(),70);
+        Assert.assertEquals(homePage.getOrderSum(),70);
 
         }
+
 
 @AfterTest
 public void tearDown() throws Exception {
