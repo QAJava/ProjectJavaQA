@@ -1,13 +1,16 @@
 package telran.com;
 
-import java.util.regex.Pattern;
-import java.util.concurrent.TimeUnit;
-import org.junit.*;
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class BorisMenu750Test {
     private WebDriver driver;
@@ -15,7 +18,7 @@ public class BorisMenu750Test {
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
-    @Before
+    @BeforeTest
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "http://change-this-to-the-site-you-are-testing/";
@@ -35,7 +38,7 @@ public class BorisMenu750Test {
         }
     }
 
-    @After
+    @AfterTest
     public void tearDown() throws Exception {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
