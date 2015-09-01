@@ -49,6 +49,11 @@ public class SundayPage extends Page {
         return this;
     }
 
+    public SundayPage clickToCheckboxPumpkink() {
+        pumpkinkAndPorkSu.click();
+        return this;
+    }
+
     public SundayPage clickToCheckboxfishermanSoup(){
         fishermanSoupSu.click();
         return this;
