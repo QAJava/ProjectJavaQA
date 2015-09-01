@@ -1,5 +1,6 @@
 package telran.com.pages;
 
+import org.apache.bcel.generic.Select;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,7 +17,12 @@ public class HomePage extends Page {
 	private WebElement webElement;
 
   @FindBy(how = How.TAG_NAME, using = "h1")
-  public WebElement header;
+
+ WebElement Days;
+ WebElement header;
+	@FindBy(id = "days")
+	private WebElement days;
+
 
     //Days
 
@@ -53,6 +59,9 @@ public class HomePage extends Page {
         driver.get(PAGE_URL);
         return this;
     }
+	@FindBy(id = ".//*[@id='account']")
+	private WebElement accountSum;
+
 
 public HomePage clickToMakeOrder (){
     clickElement(makeOrderButton);
@@ -61,7 +70,7 @@ public HomePage clickToMakeOrder (){
 
 
     public HomePage selectDay (String day){
-        new Select(days).selectByVisibleText(day);
+        new org.apache.bcel.generic.Select(days).selectByVisibleText(day);
         return this;
     }
 
