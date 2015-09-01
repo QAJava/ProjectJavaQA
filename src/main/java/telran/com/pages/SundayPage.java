@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.io.IOException;
 
-public class MondayPage extends Page {
+public class SundayPage extends Page {
     public String baseUrl;
 
 
@@ -16,14 +16,14 @@ public class MondayPage extends Page {
 
     //Days
 
-    @FindBy(xpath = "//*[@id='menu']/div[@key='1']/div[1]/input")
-    WebElement kashaMannayaMo;
-    @FindBy(xpath = "//*[@id='menu']/div[@key='1']/div[2]/input")
-    WebElement yaichnitsaMo;
-    @FindBy(xpath = "//*[@id='menu']/div[@key='1']/div[3]/input")
-    WebElement shvedStolaMo;
-    @FindBy(xpath = "//*[@id='menu']/div[@key='1']/div[4]/input")
-    WebElement plovMo;
+    @FindBy(xpath = "//*[@id='menu']/div[@key='7']/div[1]/input")
+    WebElement chickenSu;
+    @FindBy(xpath = "//*[@id='menu']/div[@key='7']/div[2]/input")
+    WebElement pumpkinkAndPorkSu;
+    @FindBy(xpath = "//*[@id='menu']/div[@key='7']/div[3]/input")
+    WebElement fishermanSoupSu;
+    @FindBy(xpath = "//*[@id='menu']/div[@key='7']/div[4]/input")
+    WebElement breadSu;
 
     @FindBy(id = "days")
 	protected WebElement days;
@@ -33,38 +33,31 @@ public class MondayPage extends Page {
 
 
 
-
-    public MondayPage(WebDriver driver) {
+    public SundayPage(WebDriver driver) {
         super(driver);
         this.PAGE_URL = baseUrl;
         PageFactory.initElements(driver, this);
     }
 
-    public MondayPage openHomePage() {
+    public SundayPage openHomePage() {
         driver.get(PAGE_URL);
         return this;
     }
 
-public MondayPage clickToCheckboxKasha(){
-    kashaMannayaMo.click();
-    return this;
-}
-
-    public MondayPage clickToEggs(){
-        yaichnitsaMo.click();
+    public SundayPage clickToCheckboxChicken() {
+        chickenSu.click();
         return this;
     }
 
-    public MondayPage clickToShvedStolaMo(){
-        shvedStolaMo.click();
+    public SundayPage clickToCheckboxfishermanSoup(){
+        fishermanSoupSu.click();
         return this;
     }
 
-    public MondayPage clickToPlovMo(){
-        plovMo.click();
+    public SundayPage clickToBread(){
+        breadSu.click();
         return this;
     }
-
     public int getOrderSum () {
         int ordersum = 0;
        ordersum = Integer.parseInt(orderSum.getText());
