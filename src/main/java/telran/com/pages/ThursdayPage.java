@@ -35,7 +35,7 @@ public class ThursdayPage extends Page {
         PageFactory.initElements(driver, this);
     }
 
-    public ThursdayPage openHomePage() {
+    public ThursdayPage openmainPage() {
         driver.get(PAGE_URL);
         return this;
     }
@@ -64,7 +64,7 @@ public class ThursdayPage extends Page {
         return ordersum;
     }
 
-    public void waitUntilHomePageIsLoaded() {
+    public void waitUntilmainPageIsLoaded() {
         try {
             waitUntilElementIsLoaded(days);
         } catch (IOException e) {

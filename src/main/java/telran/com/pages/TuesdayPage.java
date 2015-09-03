@@ -60,7 +60,7 @@ public class TuesdayPage extends Page {
      *
      * @return
      */
-    public TuesdayPage openHomePage() {
+    public TuesdayPage openmainPage() {
         driver.get(PAGE_URL);
         return this;
     }
@@ -101,7 +101,6 @@ public class TuesdayPage extends Page {
         return this;
     }
 
-<<<<<<< Updated upstream
     /**
      *
      * @return
@@ -117,13 +116,11 @@ public class TuesdayPage extends Page {
       //  @FindBy(xpath = "//*[@id='history']/li[last()]")
 
        // return currentOrderHistory;}
-=======
->>>>>>> Stashed changes
 
     /**
      *
      */
-    public void waitUntilHomePageIsLoaded() {
+    public void waitUntilmainPageIsLoaded() {
         try {
             waitUntilElementIsLoaded(days);
         } catch (IOException e) {

@@ -45,14 +45,9 @@ public class GausTMenuTest {
         driver.get(baseUrl);
         mainPage.selectDay("вторник");
         tuesdayPage.clickToSalatCaesar();
-<<<<<<< Updated upstream
+
         Assert.assertEquals(mainPage.getOrderSum(), 82);
         mainPage.clickToMakeOrder();
-=======
-        Assert.assertEquals(homePage.getOrderSum(), 82);
-        homePage.clickToMakeOrder();
-        Assert.assertEquals(homePage.getAccountSum(), 15423.91);
->>>>>>> Stashed changes
 
     }
 
@@ -61,14 +56,9 @@ public class GausTMenuTest {
         driver.get(baseUrl);
         mainPage.selectDay("вторник");
         tuesdayPage.clickToSupPureBroccoli();
-<<<<<<< Updated upstream
+
         Assert.assertEquals(mainPage.getOrderSum(),130);
 
-=======
-        Assert.assertEquals(homePage.getOrderSum(), 130);
-        homePage.clickToMakeOrder();
-        Assert.assertEquals(homePage.getAccountSum(), 15376.45);
->>>>>>> Stashed changes
     }
 
     @Test
@@ -76,14 +66,9 @@ public class GausTMenuTest {
         driver.get(baseUrl);
         mainPage.selectDay("вторник");
         tuesdayPage.clickToRaguSvininy();
-<<<<<<< Updated upstream
+
         Assert.assertEquals(mainPage.getOrderSum(),250);
 
-=======
-        Assert.assertEquals(homePage.getOrderSum(), 250);
-        homePage.clickToMakeOrder();
-        Assert.assertEquals(homePage.getAccountSum(), 15256.45);
->>>>>>> Stashed changes
     }
 
     @Test
@@ -91,14 +76,12 @@ public class GausTMenuTest {
         driver.get(baseUrl);
         mainPage.selectDay("вторник");
         tuesdayPage.clickToHleb();
-<<<<<<< Updated upstream
         Assert.assertEquals(mainPage.getOrderSum(),1);
 
-=======
-        Assert.assertEquals(homePage.getOrderSum(), 1);
-        homePage.clickToMakeOrder();
-        Assert.assertEquals(homePage.getAccountSum(), 15505.45);
->>>>>>> Stashed changes
+
+        Assert.assertEquals(mainPage.getOrderSum(), 1);
+        mainPage.clickToMakeOrder();
+       // Assert.assertEquals(mainPage.getAccountSum(), 15505.45);
     }
 
     @AfterTest

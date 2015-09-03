@@ -4,7 +4,7 @@
 	<test name="Test1">
 		<parameter name="path" value="/"/>
 		<classes>
-		    <class name="telran.com.HomePageTest"/>
+		    <class name="telran.com.mainPageTest"/>
 		</classes>
 	</test>  
 </suite>

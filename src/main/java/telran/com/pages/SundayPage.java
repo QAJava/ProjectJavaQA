@@ -39,7 +39,7 @@ public class SundayPage extends Page {
         PageFactory.initElements(driver, this);
     }
 
-    public SundayPage openHomePage() {
+    public SundayPage openmainPage() {
         driver.get(PAGE_URL);
         return this;
     }
@@ -69,7 +69,7 @@ public class SundayPage extends Page {
         return ordersum;
     }
 
-    public void waitUntilHomePageIsLoaded() {
+    public void waitUntilmainPageIsLoaded() {
         try {
             waitUntilElementIsLoaded(days);
         } catch (IOException e) {

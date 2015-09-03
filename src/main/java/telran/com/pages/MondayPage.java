@@ -40,7 +40,7 @@ public class MondayPage extends Page {
         PageFactory.initElements(driver, this);
     }
 
-    public MondayPage openHomePage() {
+    public MondayPage openmainPage() {
         driver.get(PAGE_URL);
         return this;
     }
@@ -71,7 +71,7 @@ public MondayPage clickToCheckboxKasha(){
         return ordersum;
     }
 
-    public void waitUntilHomePageIsLoaded() {
+    public void waitUntilmainPageIsLoaded() {
         try {
             waitUntilElementIsLoaded(days);
         } catch (IOException e) {

@@ -40,7 +40,7 @@ public class FridayPageIgor extends Page {
         PageFactory.initElements(driver, this);
     }
 
-    public FridayPageIgor openHomePage() {
+    public FridayPageIgor openmainPage() {
         driver.get(PAGE_URL);
         return this;
     }
@@ -62,7 +62,7 @@ public class FridayPageIgor extends Page {
         return ordersum;
     }
 
-    public void waitUntilHomePageIsLoaded() {
+    public void waitUntilmainPageIsLoaded() {
         try {
             waitUntilElementIsLoaded(days);
         } catch (IOException e) {
