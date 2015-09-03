@@ -101,6 +101,7 @@ public class TuesdayPage extends Page {
         return this;
     }
 
+<<<<<<< Updated upstream
     /**
      *
      * @return
@@ -116,6 +117,8 @@ public class TuesdayPage extends Page {
       //  @FindBy(xpath = "//*[@id='history']/li[last()]")
 
        // return currentOrderHistory;}
+=======
+>>>>>>> Stashed changes
 
     /**
      *
