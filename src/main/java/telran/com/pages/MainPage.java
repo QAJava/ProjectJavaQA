@@ -67,7 +67,7 @@ public class MainPage extends Page {
      */
     public int getAccountSum() {
         int accountsum = 15456;
-        accountsum = Integer.parseInt(orderSum.getText());
+        accountsum = Integer.parseInt(accountSum.getText());
         return accountsum;
     }
 
