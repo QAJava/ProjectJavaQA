@@ -101,21 +101,6 @@ public class TuesdayPage extends Page {
         return this;
     }
 
-    /**
-     *
-     * @return
-     */
-    public int getOrderSum () {
-        int ordersum = 0;
-        ordersum = Integer.parseInt(orderSum.getText());
-        return ordersum;
-    }
-
-   // public MainPage clickToMakeOrder (){
-     //  clickElement(makeOrderButton);
-      //  @FindBy(xpath = "//*[@id='history']/li[last()]")
-
-       // return currentOrderHistory;}
 
     /**
      *
