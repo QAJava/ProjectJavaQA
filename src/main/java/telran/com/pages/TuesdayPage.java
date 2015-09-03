@@ -111,7 +111,7 @@ public class TuesdayPage extends Page {
         return ordersum;
     }
 
-   // public HomePage clickToMakeOrder (){
+   // public MainPage clickToMakeOrder (){
      //  clickElement(makeOrderButton);
       //  @FindBy(xpath = "//*[@id='history']/li[last()]")
 

@@ -80,7 +80,7 @@ public class SundayPage extends Page {
     }
 
 
-//    public HomePage clickOnSignUpDoctorButton() {
+//    public MainPage clickOnSignUpDoctorButton() {
 //        clickElement(doctorButton);
 //        return this;
 //    }

@@ -3,71 +3,61 @@ package telran.com.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import java.io.IOException;
 
-public class MondayPage extends Page {
+public class MainPage extends Page {
     public String baseUrl;
-
-
-	private WebElement webElement;
-
-
-    //Days
-
-    @FindBy(xpath = "//*[@id='menu']/div[@key='1']/div[1]/input")
-    WebElement kashaMannayaMo;
-    @FindBy(xpath = "//*[@id='menu']/div[@key='1']/div[2]/input")
-    WebElement yaichnitsaMo;
-    @FindBy(xpath = "//*[@id='menu']/div[@key='1']/div[3]/input")
-    WebElement shvedStolaMo;
-    @FindBy(xpath = "//*[@id='menu']/div[@key='1']/div[4]/input")
-    WebElement plovMo;
-
     @FindBy(id = "days")
-	protected WebElement days;
-
+    protected WebElement days;
     @FindBy(id = "orderSum")
     protected WebElement orderSum;
 
+    //Days
+    @FindBy(id = "makeOrder")
+    protected WebElement makeOrderButton;
+    @FindBy(xpath = "//*[@id='history']/li[last()]")
+    protected WebElement currentOrderHistory;
+    @FindBy(linkText = "Начать заново")
+    protected WebElement startOverLink;
+    @FindBy(how = How.TAG_NAME, using = "h1")
+    WebElement header;
+    @FindBy(xpath = "//*[@id='menu']/div[@key='1']/div[1]/input")
+    WebElement kashaMannayaMo;
+    private WebElement webElement;
+    @FindBy(id = "account")
+    private WebElement accountSum;
 
 
-
-    public MondayPage(WebDriver driver) {
+    public MainPage(WebDriver driver) {
         super(driver);
         this.PAGE_URL = baseUrl;
         PageFactory.initElements(driver, this);
     }
 
-    public MondayPage openHomePage() {
+    public MainPage openHomePage() {
         driver.get(PAGE_URL);
         return this;
     }
 
-public MondayPage clickToCheckboxKasha(){
-    kashaMannayaMo.click();
-    return this;
-}
 
-    public MondayPage clickToEggs(){
-        yaichnitsaMo.click();
+    public MainPage clickToMakeOrder() {
+        clickElement(makeOrderButton);
         return this;
     }
 
-    public MondayPage clickToShvedStolaMo(){
-        shvedStolaMo.click();
+
+    public MainPage selectDay(String day) {
+
+        new org.openqa.selenium.support.ui.Select(days).selectByVisibleText(day);
         return this;
     }
 
-    public MondayPage clickToPlovMo(){
-        plovMo.click();
-        return this;
-    }
-
-    public int getOrderSum () {
+    public int getOrderSum() {
         int ordersum = 0;
-       ordersum = Integer.parseInt(orderSum.getText());
+        ordersum = Integer.parseInt(orderSum.getText());
         return ordersum;
     }
 

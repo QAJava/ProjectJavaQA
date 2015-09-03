@@ -10,7 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import telran.com.pages.HomePage;
+import telran.com.pages.MainPage;
 import telran.com.pages.TuesdayPage;
 
 import java.util.NoSuchElementException;
@@ -27,7 +27,7 @@ public class GausTMenuTest {
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
-    public HomePage homePage;
+    public MainPage mainPage;
     public TuesdayPage tuesdayPage;
 
     @BeforeTest
@@ -35,7 +35,7 @@ public class GausTMenuTest {
         driver = new FirefoxDriver();
         baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        homePage = PageFactory.initElements(driver, HomePage.class);
+        mainPage = PageFactory.initElements(driver, MainPage.class);
         tuesdayPage = PageFactory.initElements(driver, TuesdayPage.class);
 
     }
@@ -43,37 +43,37 @@ public class GausTMenuTest {
     @Test
     public void testGausT1()  {
         driver.get(baseUrl);
-        homePage.selectDay("вторник");
+        mainPage.selectDay("вторник");
         tuesdayPage.clickToSalatCaesar();
-        Assert.assertEquals(homePage.getOrderSum(), 82);
-        homePage.clickToMakeOrder();
+        Assert.assertEquals(mainPage.getOrderSum(), 82);
+        mainPage.clickToMakeOrder();
 
     }
 
     @Test
     public void testGausT2()  {
         driver.get(baseUrl);
-        homePage.selectDay("вторник");
+        mainPage.selectDay("вторник");
         tuesdayPage.clickToSupPureBroccoli();
-        Assert.assertEquals(homePage.getOrderSum(),130);
+        Assert.assertEquals(mainPage.getOrderSum(),130);
 
     }
 
     @Test
     public void testGausT3()  {
         driver.get(baseUrl);
-        homePage.selectDay("вторник");
+        mainPage.selectDay("вторник");
         tuesdayPage.clickToRaguSvininy();
-        Assert.assertEquals(homePage.getOrderSum(),250);
+        Assert.assertEquals(mainPage.getOrderSum(),250);
 
     }
 
     @Test
     public void testGausT4()  {
         driver.get(baseUrl);
-        homePage.selectDay("вторник");
+        mainPage.selectDay("вторник");
         tuesdayPage.clickToHleb();
-        Assert.assertEquals(homePage.getOrderSum(),1);
+        Assert.assertEquals(mainPage.getOrderSum(),1);
 
     }
 

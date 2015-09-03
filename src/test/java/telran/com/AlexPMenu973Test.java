@@ -1,6 +1,5 @@
 package telran.com;
 
-import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.support.PageFactory;
@@ -9,11 +8,10 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
-import telran.com.pages.HomePage;
+import telran.com.pages.MainPage;
 import telran.com.pages.SundayPage;
 
 public class AlexPMenu973Test {
@@ -21,7 +19,7 @@ public class AlexPMenu973Test {
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
-    public HomePage homePage;
+    public MainPage mainPage;
     public SundayPage sundayPage;
 
     @BeforeTest
@@ -29,7 +27,7 @@ public class AlexPMenu973Test {
         driver = new FirefoxDriver();
         baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        homePage = PageFactory.initElements(driver,HomePage.class);
+        mainPage = PageFactory.initElements(driver,MainPage.class);
         sundayPage = PageFactory.initElements(driver,SundayPage.class);
     }
 
@@ -37,13 +35,13 @@ public class AlexPMenu973Test {
     public void testAlexPMenu973(){ //throws Exception {    driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
 
         driver.get(baseUrl);
-        homePage.selectDay("воскресенье");
+        mainPage.selectDay("воскресенье");
         sundayPage.clickToCheckboxChicken();
         sundayPage.clickToCheckboxPumpkink();
         sundayPage.clickToCheckboxfishermanSoup();
         sundayPage.clickToBread();
         //driver.findElement(By.id("makeOrder")).click();
-        Assert.assertEquals(homePage.getOrderSum(),251);
+        Assert.assertEquals(mainPage.getOrderSum(),251);
 
 //        new Select(driver.findElement(By.id("days"))).selectByVisibleText("воскресенье");
 //        driver.findElement(By.xpath("(//input[@type='checkbox'])[5]")).click();
