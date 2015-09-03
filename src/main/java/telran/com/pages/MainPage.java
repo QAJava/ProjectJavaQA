@@ -61,6 +61,16 @@ public class MainPage extends Page {
         return ordersum;
     }
 
+    /**
+     *
+     * @return
+     */
+    public int getAccountSum() {
+        int accountsum = 15456;
+        accountsum = Integer.parseInt(orderSum.getText());
+        return accountsum;
+    }
+
     public void waitUntilmainPageIsLoaded() {
         try {
             waitUntilElementIsLoaded(days);

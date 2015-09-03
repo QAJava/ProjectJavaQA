@@ -45,10 +45,9 @@ public class GausTMenuTest {
         driver.get(baseUrl);
         mainPage.selectDay("вторник");
         tuesdayPage.clickToSalatCaesar();
-
         Assert.assertEquals(mainPage.getOrderSum(), 82);
         mainPage.clickToMakeOrder();
-
+        Assert.assertEquals(mainPage.getAccountSum(), 15423.91);
     }
 
     @Test
@@ -56,8 +55,9 @@ public class GausTMenuTest {
         driver.get(baseUrl);
         mainPage.selectDay("вторник");
         tuesdayPage.clickToSupPureBroccoli();
-
-        Assert.assertEquals(mainPage.getOrderSum(),130);
+        Assert.assertEquals(mainPage.getOrderSum(), 130);
+        mainPage.clickToMakeOrder();
+        Assert.assertEquals(mainPage.getAccountSum(), 15376.45);
 
     }
 
@@ -66,9 +66,9 @@ public class GausTMenuTest {
         driver.get(baseUrl);
         mainPage.selectDay("вторник");
         tuesdayPage.clickToRaguSvininy();
-
-        Assert.assertEquals(mainPage.getOrderSum(),250);
-
+        Assert.assertEquals(mainPage.getOrderSum(), 250);
+        mainPage.clickToMakeOrder();
+        Assert.assertEquals(mainPage.getAccountSum(), 15256.45);
     }
 
     @Test
@@ -76,12 +76,9 @@ public class GausTMenuTest {
         driver.get(baseUrl);
         mainPage.selectDay("вторник");
         tuesdayPage.clickToHleb();
-        Assert.assertEquals(mainPage.getOrderSum(),1);
-
-
         Assert.assertEquals(mainPage.getOrderSum(), 1);
         mainPage.clickToMakeOrder();
-       // Assert.assertEquals(mainPage.getAccountSum(), 15505.45);
+        Assert.assertEquals(mainPage.getAccountSum(), 15505.45);
     }
 
     @AfterTest
