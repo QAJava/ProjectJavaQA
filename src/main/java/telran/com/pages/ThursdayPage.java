@@ -35,7 +35,7 @@ public class ThursdayPage extends Page {
         PageFactory.initElements(driver, this);
     }
 
-    public ThursdayPage openmainPage() {
+    public ThursdayPage openMainPage() {
         driver.get(PAGE_URL);
         return this;
     }

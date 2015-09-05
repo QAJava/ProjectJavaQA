@@ -4,17 +4,18 @@ package telran.com;
  * Created by Anton on 22-Aug-15.
  */
 
-        import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
 
-import java.util.concurrent.TimeUnit;
+ import org.junit.After;
+ import org.junit.Before;
+ import org.junit.Test;
+ import org.openqa.selenium.*;
+ import org.openqa.selenium.firefox.FirefoxDriver;
+ import org.openqa.selenium.support.ui.Select;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+ import java.util.concurrent.TimeUnit;
+
+ import static org.junit.Assert.assertTrue;
+ import static org.junit.Assert.fail;
 
 public class AntonMenu390Test {
     private WebDriver driver;

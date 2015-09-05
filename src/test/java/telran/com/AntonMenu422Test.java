@@ -5,6 +5,7 @@ package telran.com;
  */
 
 
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -88,7 +89,8 @@ public class AntonMenu422Test {
         }
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.id("orderSum"))) break; } catch (Exception e) {}
+            try { if (isElementPresent(By.id("orderSum"))) break; }
+            catch (Exception e) {}
             Thread.sleep(1000);
         }
 

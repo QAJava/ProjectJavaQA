@@ -1,11 +1,13 @@
 package telran.com.pages;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
+import static org.testng.Assert.fail;
 import java.io.IOException;
 
 public class MainPage extends Page {
@@ -14,6 +16,7 @@ public class MainPage extends Page {
     protected WebElement days;
     @FindBy(id = "orderSum")
     protected WebElement orderSum;
+    public final int DISCOUNT = 50;
 
     //Days
     @FindBy(id = "makeOrder")
@@ -37,7 +40,7 @@ public class MainPage extends Page {
         PageFactory.initElements(driver, this);
     }
 
-    public MainPage openmainPage() {
+    public MainPage openMainPage() {
         driver.get(PAGE_URL);
         return this;
     }
@@ -58,8 +61,9 @@ public class MainPage extends Page {
     public int getOrderSum() {
         int ordersum = 0;
         ordersum = Integer.parseInt(orderSum.getText());
-        return ordersum;
+       return ordersum;
     }
+
 
     /**
      *
@@ -71,7 +75,9 @@ public class MainPage extends Page {
         return accountsum;
     }
 
-    public void waitUntilmainPageIsLoaded() {
+
+
+    public void waitUntilMainPageIsLoaded() {
         try {
             waitUntilElementIsLoaded(days);
         } catch (IOException e) {
@@ -83,11 +89,6 @@ public class MainPage extends Page {
 
 
 
-
-//    public MainPage clickOnSignUpDoctorButton() {
-//        clickElement(doctorButton);
-//        return this;
-//    }
 
 
 }

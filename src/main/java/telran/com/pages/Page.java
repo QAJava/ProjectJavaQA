@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
 
 import java.io.IOException;
 import java.util.NoSuchElementException;
@@ -41,7 +43,7 @@ public abstract class Page {
 		element.clear();
 		//Log.info("entering text '" + text + "' into element " + element);
 		element.sendKeys(text);
-		// Assert.assertEquals(element.getAttribute("value"), text);
+		 Assert.assertEquals(element.getAttribute("value"), text);
 	}
 
 

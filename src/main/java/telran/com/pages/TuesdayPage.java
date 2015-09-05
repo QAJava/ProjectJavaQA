@@ -1,9 +1,18 @@
 package telran.com.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import static org.testng.Assert.fail;
+
+import java.util.Calendar;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+import java.util.Scanner;
 
 import java.io.IOException;
 /**
@@ -14,6 +23,10 @@ public class TuesdayPage extends Page {
 
 
     private WebElement webElement;
+    public final int DISCOUNT = 50;
+
+    public static String time;   //time variable.
+    public static DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");   //DateFormat variable.
 
     /**
      * Days of TuesdayPage area
@@ -40,6 +53,7 @@ public class TuesdayPage extends Page {
      */
     @FindBy(id = "makeOrder")
     protected WebElement makeOrderButton;
+
     /**
      * Text element of TuesdayPage area
      */
@@ -60,10 +74,22 @@ public class TuesdayPage extends Page {
      *
      * @return
      */
-    public TuesdayPage openmainPage() {
+    public TuesdayPage openMainPage() {
         driver.get(PAGE_URL);
         return this;
     }
+
+    /**
+     *Time Constructor
+     * @return time
+     */
+    static String getTime()
+    {
+        Calendar cal = Calendar.getInstance();
+        time = dateFormat.format(cal.getTime());   //Getting the current system time.
+        return time;
+    }
+
 
     /**
      *
@@ -101,11 +127,20 @@ public class TuesdayPage extends Page {
         return this;
     }
 
+    /**
+     *
+     * @param text
+     */
+    public void checkTextInReport (String  text){
+        String locator = "//*[@id='history']/li[last()][contains(text(),'"+ text+"')]";
+        WebElement element = driver.findElement(By.xpath(locator));
+       //assertTrue("Text " +text+ " is not present in Menu report",element.isDisplayed());
+    }
 
     /**
      *
      */
-    public void waitUntilmainPageIsLoaded() {
+    public void waitUntilMainPageIsLoaded() {
         try {
             waitUntilElementIsLoaded(days);
         } catch (IOException e) {
