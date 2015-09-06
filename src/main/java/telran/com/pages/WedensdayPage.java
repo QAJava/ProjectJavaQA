@@ -7,9 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class WedensdayPage extends Page {
     public String baseUrl;
-public WebDriver driver;
+    public WebDriver driver;
 
-	private WebElement webElement;
+    private WebElement webElement;
 
 
     //Days
@@ -42,21 +42,21 @@ public WebDriver driver;
         borjchCheckbox.click();
         return this;
     }
-    public WedensdayPage clickToOtbivnaya(){
+
+    public WedensdayPage clickToOtbivnaya() {
         otbivnayaCheckbox.click();
         return this;
     }
 
-    public WedensdayPage clickToPure(){
+    public WedensdayPage clickToPure() {
         pureCheckbox.click();
         return this;
     }
 
-    public WedensdayPage clickToCHleb(){
+    public WedensdayPage clickToCHleb() {
         chlebCheckbox.click();
         return this;
     }
-
 
 
 //    public MainPage clickOnSignUpDoctorButton() {
