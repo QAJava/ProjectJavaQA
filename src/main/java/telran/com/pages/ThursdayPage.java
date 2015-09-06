@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class ThursdayPage extends Page {
     public String baseUrl;
-    private WebElement webElement;
+
 
     @FindBy(xpath = "//*[@id='menu']/div[@key='4']/div[1]/input")
     WebElement salatTh;

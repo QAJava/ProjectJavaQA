@@ -1,38 +1,43 @@
 package telran.com.pages;
 
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
-import static org.testng.Assert.fail;
 import java.io.IOException;
 
+import static org.testng.AssertJUnit.assertTrue;
+
 public class MainPage extends Page {
+    public final int DISCOUNT = 50;
     public String baseUrl;
     @FindBy(id = "days")
-    protected WebElement days;
+    WebElement days;
+
     @FindBy(id = "orderSum")
-    protected WebElement orderSum;
-    public final int DISCOUNT = 50;
+    WebElement orderSum;
+
 
     //Days
     @FindBy(id = "makeOrder")
-    protected WebElement makeOrderButton;
-    @FindBy(xpath = "//*[@id='history']/li[last()]")
-    protected WebElement currentOrderHistory;
+    WebElement makeOrderButton;
+
     @FindBy(linkText = "Начать заново")
-    protected WebElement startOverLink;
+    WebElement startOverLink;
+
     @FindBy(how = How.TAG_NAME, using = "h1")
     WebElement header;
+
     @FindBy(xpath = "//*[@id='menu']/div[@key='1']/div[1]/input")
     WebElement kashaMannayaMo;
-    private WebElement webElement;
-    @FindBy(id = "account")
-    private WebElement accountSum;
 
+    @FindBy(id = "account")
+    WebElement accountSum;
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -54,27 +59,25 @@ public class MainPage extends Page {
 
     public MainPage selectDay(String day) {
 
-        new org.openqa.selenium.support.ui.Select(days).selectByVisibleText(day);
+        new Select(days).selectByVisibleText(day);
         return this;
     }
 
-    public int getOrderSum() {
-        int ordersum = 0;
-        ordersum = Integer.parseInt(orderSum.getText());
-       return ordersum;
+    public double getOrderSum() {
+        double ordersum = 0;
+        ordersum = Double.parseDouble(orderSum.getText());
+        return ordersum;
     }
 
 
     /**
      *
-     * @return
      */
-    public int getAccountSum() {
+    /*public int getAccountSum() {
         int accountsum = 15456;
         accountsum = Integer.parseInt(accountSum.getText());
         return accountsum;
-    }
-
+    }*/
 
 
     public void waitUntilMainPageIsLoaded() {
@@ -87,8 +90,11 @@ public class MainPage extends Page {
         }
     }
 
-
-
+    public void checkTextInReport(WebDriver driver, String text) {
+        String locator = "//*[@id='history']/li[last()][contains(text(),'" + text + "')]";
+        WebElement element = driver.findElement(By.xpath(locator));
+        assertTrue("Text " + text + " is not present in Menu report", element.isDisplayed());
+    }
 
 
 }

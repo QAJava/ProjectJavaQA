@@ -3,6 +3,10 @@
   <component name="CompilerConfiguration">
     <excludeFromCompile>
       <file url="file://$PROJECT_DIR$/src/main/java/telran/com/pages/MainPage.java" />
+      <file url="file://$PROJECT_DIR$/src/test/java/telran/com/YacovMenu968Test.java" />
+      <file url="file://$PROJECT_DIR$/src/test/java/telran/com/GausTMenuTest.java" />
+      <file url="file://$PROJECT_DIR$/src/test/java/telran/com/AlexPMenu973Test.java" />
+      <file url="file://$PROJECT_DIR$/src/test/java/telran/com/WedensdayTest.java" />
     </excludeFromCompile>
     <resourceExtensions />
     <wildcardResourcePatterns>
