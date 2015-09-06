@@ -40,7 +40,7 @@ public class AlexPMenu973Test {
         sundayPage.clickToCheckboxfishermanSoup();
         sundayPage.clickToBread();
         mainPage.clickToMakeOrder();
-        mainPage.checkTextInReport("250");
+        mainPage.checkTextInReport(driver,"250");
 
 //        new Select(driver.findElement(By.id("days"))).selectByVisibleText("воскресенье");
 //        driver.findElement(By.xpath("(//input[@type='checkbox'])[5]")).click();

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <excludeFromCompile>
+      <file url="file://$PROJECT_DIR$/src/main/java/telran/com/pages/HomePage.java" />
       <file url="file://$PROJECT_DIR$/src/main/java/telran/com/pages/MainPage.java" />
       <file url="file://$PROJECT_DIR$/src/test/java/telran/com/YacovMenu968Test.java" />
       <file url="file://$PROJECT_DIR$/src/test/java/telran/com/GausTMenuTest.java" />
