@@ -6,7 +6,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import telran.com.pagesRoman.FridayPageRoman;
 import telran.com.pagesRoman.HomePageRoman;
 import telran.com.pagesRoman.MondayPageRoman;
 

@@ -32,7 +32,7 @@ public class AlexPMondayPage extends Page {
     public AlexPMondayPage(WebDriver driver) {
         super(driver);
         this.PAGE_URL = baseUrl;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
     public AlexPMondayPage openMainPage(){
         driver.get(PAGE_URL);

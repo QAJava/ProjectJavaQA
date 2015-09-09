@@ -1,16 +1,15 @@
 package telran.com.pages;
 
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-
 import java.io.IOException;
-import java.util.NoSuchElementException;
 
 /**
  * Abstract class representation of a Page in the UI. Page object pattern
@@ -54,7 +53,7 @@ public abstract class Page {
 
 	public void waitUntilIsLoadedCustomTime(WebElement element, int time) {
 		try {
-			new WebDriverWait(driver, time).until(ExpectedConditions.visibilityOf(element));
+			//new WebDriverWait(driver, time).until(ExpectedConditions.visibilityOf(element));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -62,7 +61,7 @@ public abstract class Page {
 
 	public void waitUntilIsLoaded(WebElement element) {
 		try {
-			new WebDriverWait(driver, 7).until(ExpectedConditions.visibilityOf(element));
+			//new WebDriverWait(driver, 7).until(ExpectedConditions.visibilityOf(element));
 		} catch (Exception e) {
 			// Log.info("---------------------------------");
 			// Log.info("element " + element + " can not be found by ExpectedConditions.visibilityOf(element)");
@@ -77,12 +76,12 @@ public abstract class Page {
 	// }
 
 	// Returns label that we chose
-	public String selectValueInDropdown(WebElement dropdown, String value) {
-		Select select = new Select(dropdown);
-		select.selectByValue(value);
-		WebElement option = select.getFirstSelectedOption(); // Chooses label that fits the value
-		return option.getText();
-	}
+	//public String selectValueInDropdown(WebElement dropdown, String value) {
+		//Select select = new Select(dropdown);
+	//	select.selectByValue(value);
+	//	WebElement option = select.getFirstSelectedOption(); // Chooses label that fits the value
+	//	return option.getText();
+//	}
 
 	public boolean verifyElementIsPresent(WebElement element) {
 		try {

@@ -5,17 +5,17 @@ package telran.com;
  */
 
 
- import org.junit.After;
- import org.junit.Before;
- import org.junit.Test;
- import org.openqa.selenium.*;
- import org.openqa.selenium.firefox.FirefoxDriver;
- import org.openqa.selenium.support.ui.Select;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 
- import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeUnit;
 
- import static org.junit.Assert.assertTrue;
- import static org.junit.Assert.fail;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class AntonMenu390Test {
     private WebDriver driver;

@@ -5,16 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
-import static org.testng.Assert.fail;
-
-import java.util.Calendar;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
-import java.util.Scanner;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 /**
  * Created by Anton,Tanya on 8/30/15.
  */

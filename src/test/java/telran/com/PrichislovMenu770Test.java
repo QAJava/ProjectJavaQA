@@ -1,17 +1,16 @@
 package telran.com;
 
 
-        import java.util.regex.Pattern;
-        import java.util.concurrent.TimeUnit;
-        import org.testng.*;
-        import static org.testng.Assert.*;
-        import static org.hamcrest.CoreMatchers.*;
-        import org.openqa.selenium.*;
-        import org.openqa.selenium.firefox.FirefoxDriver;
-        import org.openqa.selenium.support.ui.Select;
-        import org.testng.annotations.AfterTest;
-        import org.testng.annotations.BeforeTest;
-        import org.testng.annotations.Test;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
+
+import static org.testng.Assert.*;
 
 public class PrichislovMenu770Test {
     private WebDriver driver;
