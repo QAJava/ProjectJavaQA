@@ -70,6 +70,7 @@ public class AlexPMondayPage extends Page {
         plov.click();
         return this;
     }
+
     public void checkTextInReport(WebDriver driver, String text) {
         String locator = "//*[@id='history']/li[last()][contains(text(),'" + text + "')]";
         WebElement element = driver.findElement(By.xpath(locator));

@@ -67,7 +67,6 @@ public class AlexPMondayTest {
             return false;
         }
     }
-
     private String closeAlertAndGetItsText() {
         try {
             Alert alert = driver.switchTo().alert();
