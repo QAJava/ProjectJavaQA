@@ -13,6 +13,7 @@ import java.io.IOException;
 
 import static org.testng.AssertJUnit.assertTrue;
 
+
 public class MainPage extends Page {
     public final int DISCOUNT = 50;
     public String baseUrl;
@@ -78,8 +79,6 @@ public class MainPage extends Page {
         accountsum = Integer.parseInt(accountSum.getText());
         return accountsum;
     }*/
-
-
     public void waitUntilMainPageIsLoaded() {
         try {
             waitUntilElementIsLoaded(days);
@@ -92,6 +91,12 @@ public class MainPage extends Page {
 
     public void checkTextInReport(WebDriver driver, String text) {
         String locator = "//*[@id='history']/li[last()][contains(text(),'" + text + "')]";
+        WebElement element = driver.findElement(By.xpath(locator));
+        assertTrue("Text " + text + " is not present in Menu report", element.isDisplayed());
+    }
+
+    public void checkText(WebDriver driver, String text) {
+        String locator = "//*[contains(text(),'" + text + "')]";
         WebElement element = driver.findElement(By.xpath(locator));
         assertTrue("Text " + text + " is not present in Menu report", element.isDisplayed());
     }

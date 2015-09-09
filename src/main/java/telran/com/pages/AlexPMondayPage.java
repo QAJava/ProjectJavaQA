@@ -11,9 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 import static org.testng.AssertJUnit.assertTrue;
 
 public class AlexPMondayPage extends Page {
-    private WebElement webElement;
     public String baseUrl;
-
     @FindBy(xpath = "//*[@id='menu']/div[@key=1]/div[1]/input")
     WebElement kasha;
     @FindBy(xpath = "//*[@id='menu']/div[@key=1]/div[2]/input")
@@ -28,6 +26,7 @@ public class AlexPMondayPage extends Page {
     WebElement orderSum;
     @FindBy(id = "makeOrder")
     WebElement makeOrderButton;
+    private WebElement webElement;
 
     public AlexPMondayPage(WebDriver driver) {
         super(driver);
@@ -48,7 +47,11 @@ public class AlexPMondayPage extends Page {
 //        return orderSum;
 //
 //    }
+public AlexPMondayPage checkThatKashaDisplyed(String message) {
+    checkIfDisplayed(kasha, message);
 
+    return this;
+}
     public AlexPMondayPage clickToMakeOrder(){
          makeOrderButton.click();
          return this;

@@ -114,6 +114,10 @@ public abstract class Page {
 		}
 	}
 
+	public void checkIfDisplayed(WebElement element, String message) {
+
+		Assert.assertTrue(element.isDisplayed(), message);
+	}
 
 	public void waitUntilElementIsLoaded(WebElement element) throws IOException, InterruptedException {
 		new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOf(element));

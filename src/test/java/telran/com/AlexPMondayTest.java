@@ -13,11 +13,11 @@ import java.util.concurrent.TimeUnit;
 import static org.testng.Assert.fail;
 
 public class AlexPMondayTest {
+    public AlexPMondayPage mondayPage;
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
-    public AlexPMondayPage mondayPage;
 
     @BeforeTest
     public void setUp() throws Exception {
@@ -31,6 +31,7 @@ public class AlexPMondayTest {
     public void testMenuAlexP() {
         driver.get(baseUrl);
         mondayPage.selectDay("понедельник");
+        mondayPage.checkThatKashaDisplyed("Point menu - Kasha - is notdisplayed");
         mondayPage.clickToKasha();
         mondayPage.clickToPlov();
         mondayPage.clickToMakeOrder();

@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <excludeFromCompile>
-      <file url="file://$PROJECT_DIR$/src/main/java/telran/com/pages/MainPage.java" />
-      <file url="file://$PROJECT_DIR$/src/test/java/telran/com/YacovMenu968Test.java" />
-      <file url="file://$PROJECT_DIR$/src/test/java/telran/com/GausTMenuTest.java" />
-      <file url="file://$PROJECT_DIR$/src/test/java/telran/com/AlexPMenu973Test.java" />
-      <file url="file://$PROJECT_DIR$/src/test/java/telran/com/WedensdayTest.java" />
-      <file url="file://$PROJECT_DIR$/src/main/java/telran/com/pages/HomePage.java" />
-    </excludeFromCompile>
     <resourceExtensions />
     <wildcardResourcePatterns>
       <entry name="!?*.java" />
@@ -25,7 +17,7 @@
       <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
-      <profile default="false" name="Annotation profile for ProjectJavaQA" enabled="true">
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -33,8 +25,8 @@
         <module name="ProjectJavaQA" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="ProjectJavaQA" target="1.6" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="ProjectJavaQA" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

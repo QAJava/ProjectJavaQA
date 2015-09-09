@@ -9,13 +9,13 @@ import java.io.IOException;
 
 public class MondayPage extends Page {
     public String baseUrl;
-
-
-	private WebElement webElement;
+    @FindBy(id = "days")
+    protected WebElement days;
 
 
     //Days
-
+    @FindBy(id = "orderSum")
+    protected WebElement orderSum;
     @FindBy(xpath = "//*[@id='menu']/div[@key='1']/div[1]/input")
     WebElement kashaMannayaMo;
     @FindBy(xpath = "//*[@id='menu']/div[@key='1']/div[2]/input")
@@ -24,12 +24,7 @@ public class MondayPage extends Page {
     WebElement shvedStolaMo;
     @FindBy(xpath = "//*[@id='menu']/div[@key='1']/div[4]/input")
     WebElement plovMo;
-
-    @FindBy(id = "days")
-	protected WebElement days;
-
-    @FindBy(id = "orderSum")
-    protected WebElement orderSum;
+    private WebElement webElement;
 
 
 
@@ -40,8 +35,15 @@ public class MondayPage extends Page {
         PageFactory.initElements(driver, this);
     }
 
+
     public MondayPage openMainPage() {
         driver.get(PAGE_URL);
+        return this;
+    }
+
+    public MondayPage checkThatKashaDisplyed(String message) {
+        checkIfDisplayed(kashaMannayaMo, message);
+
         return this;
     }
 
