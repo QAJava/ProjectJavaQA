@@ -1,5 +1,6 @@
 package telran.com.pagesRoman;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,15 +28,17 @@ public class HomePageRoman extends PageRoman{
 	@FindBy(xpath = "//*[@id='history']/li[last()]")
 	protected WebElement currentOrderHistory;
 
+	public HomePageRoman() {}
 
 	public HomePageRoman(WebDriver dr, String url){
 		super(dr, url);
-		PageFactory.initElements(super.driver, this);
+		PageFactory.initElements(dr, this);
 	}
 
 	public void startOver(){
-	//	startOverLink.click();
 		super.clickElement(startOverLink);
+	//      Second solution:
+	//	startOverLink.click();
 	}
 
 	public float getInitAccount() {
@@ -54,14 +57,21 @@ public class HomePageRoman extends PageRoman{
 //		new Select(days).selectByVisibleText(day);
 	}
 
-	public int viewOrderSum(){
-		return Integer.parseInt(orderSum.getText());
-
+	public void checkOrderSum(String actualSum){
+		Float currentSum = Float.parseFloat(orderSum.getText());
+		Float sum = Float.parseFloat(actualSum);
+		Assert.assertEquals(sum, currentSum);
 	}
+
 	public void clickToMakeOrder(){
 		super.clickElement(makeOrderButton);
 	}
 
+	public void checkTextInHistory(String text){
+		String currentHistory = currentOrderHistory.getText();
+		Assert.assertTrue( currentHistory.toLowerCase().contains(text.toLowerCase()));
+
+	}
 
 
 

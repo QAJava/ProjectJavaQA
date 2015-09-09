@@ -19,6 +19,10 @@ public class PageRoman {
 		this.url = url;
 	}
 
+	public void setDriver(WebDriver dr) {
+		this.driver = dr;
+	}
+
 	public void setUrl(String url){
 		this.url = url;
 	}

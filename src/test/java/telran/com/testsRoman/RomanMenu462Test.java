@@ -1,22 +1,21 @@
 package telran.com.testsRoman;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import telran.com.pagesRoman.FridayPageRoman;
 import telran.com.pagesRoman.HomePageRoman;
+import telran.com.pagesRoman.MondayPageRoman;
 
 import java.util.concurrent.TimeUnit;
 
-public class RomanMenu968Test {
+public class RomanMenu462Test {
 
 	private HomePageRoman homePage;
-	private FridayPageRoman fridayPage;
+	private MondayPageRoman mondayPage;
 
 	@BeforeTest
 	public void setUp() throws Exception{
@@ -24,20 +23,19 @@ public class RomanMenu968Test {
 		String url = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		homePage = new HomePageRoman(driver, url);
-		fridayPage = new FridayPageRoman(driver);
+		mondayPage = new MondayPageRoman(driver);
 	}
 
 	@Test
-	public void testMenu968(){
+	public void testMenu462(){
 		homePage.openPage();
 		float initAccount = homePage.getInitAccount();
-		homePage.selectDay("пятница");
-		fridayPage.clickToBefsrtrog();
-		fridayPage.clickToKapusta();
+		homePage.selectDay("понедельник");
+		mondayPage.clickToShvedStol();
+		mondayPage.clickToPlov();
 		homePage.clickToMakeOrder();
 		float currentAccount = homePage.getCurrentAccount();
-		Assert.assertEquals((int)(initAccount - currentAccount), 95);
-//		Assert.assertEquals(Math.round(initAccount - currentAccount), 95);
+		Assert.assertEquals((int)(initAccount - currentAccount), 450);
 	}
 
 	@AfterTest
