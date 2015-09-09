@@ -29,7 +29,7 @@ public class RomanMenu1029Test {
 	}
 
 	@Test
-	public void testMenu968(){
+	public void testMenu1029(){
 		homePage.openPage();
 		homePage.selectDay("понедельник");
 		Assert.assertFalse(mondayPage.yaichnitsaIsSelected());

@@ -51,7 +51,7 @@ public class MondayPageRoman extends PageRoman {
 	public boolean isMondayMenuDisplayed(){
 		WebElement el;
 		try {
-			el = driver.findElement(By.xpath("//*[@id='menu']/div[@key='3']"));
+			el = driver.findElement(By.xpath("//*[@id='menu']/div[@key='1']"));
 		} catch(NoSuchElementException e) {
 			return false;
 		}
