@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import static org.testng.AssertJUnit.assertTrue;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -101,7 +102,7 @@ public class TuesdayPage extends Page {
     public void checkTextInReport (String  text){
         String locator = "//*[@id='history']/li[last()][contains(text(),'"+ text+"')]";
         WebElement element = driver.findElement(By.xpath(locator));
-       //assertTrue("Text " +text+ " is not present in Menu report",element.isDisplayed());
+       assertTrue("Text " +text+ " is not present in Menu report",element.isDisplayed());
     }
 
 
