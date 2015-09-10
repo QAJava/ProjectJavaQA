@@ -10,9 +10,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-/**
- * Created by Anton,Tanya on 8/30/15.
- */
+
 public class TuesdayPage extends Page {
     public String baseUrl;
 
@@ -49,35 +47,24 @@ public class TuesdayPage extends Page {
     @FindBy(id = "makeOrder")
     protected WebElement makeOrderButton;
 
-    /**
-     * Text element of TuesdayPage area
-     */
+
     @FindBy(xpath = "//*[@id='history']/li[last()]")
     protected WebElement currentOrderHistory;
 
-    /**
-     *
-     * @param driver
-     */
+
     public TuesdayPage(WebDriver driver) {
         super(driver);
         this.PAGE_URL = baseUrl;
         PageFactory.initElements(driver, this);
     }
 
-    /**
-     *
-     * @return
-     */
+
     public TuesdayPage openMainPage() {
         driver.get(PAGE_URL);
         return this;
     }
 
-    /**
-     *Time Constructor
-     * @return time
-     */
+
     static String getTime()
     {
         Calendar cal = Calendar.getInstance();
@@ -86,55 +73,38 @@ public class TuesdayPage extends Page {
     }
 
 
-    /**
-     *
-     * @return
-     */
+
     public TuesdayPage clickToSalatCaesar(){
         salatCaesar.click();
         return this;
     }
 
-    /**
-     *
-     * @return
-     */
+
     public TuesdayPage clickToSupPureBroccoli(){
         supPureBroccoli.click();
         return this;
     }
 
-    /**
-     *
-     * @return
-     */
+
     public TuesdayPage clickToRaguSvininy(){
         raguSvininy.click();
         return this;
     }
 
-    /**
-     *
-     * @return
-     */
+
     public TuesdayPage clickToHleb() {
         hleb.click();
         return this;
     }
 
-    /**
-     *
-     * @param text
-     */
+
     public void checkTextInReport (String  text){
         String locator = "//*[@id='history']/li[last()][contains(text(),'"+ text+"')]";
         WebElement element = driver.findElement(By.xpath(locator));
        //assertTrue("Text " +text+ " is not present in Menu report",element.isDisplayed());
     }
 
-    /**
-     *
-     */
+
     public void waitUntilMainPageIsLoaded() {
         try {
             waitUntilElementIsLoaded(days);
