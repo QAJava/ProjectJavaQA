@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import telran.com.pages.MainPage;
+import telran.com.pages.BasePage;
 import telran.com.pages.SundayPage;
 
 import java.util.concurrent.TimeUnit;
@@ -18,7 +18,7 @@ public class AlexPMenu973Test {
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
-    public MainPage mainPage;
+    public BasePage basePage;
     public SundayPage sundayPage;
 
     @BeforeTest
@@ -26,7 +26,7 @@ public class AlexPMenu973Test {
         driver = new FirefoxDriver();
         baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        mainPage = PageFactory.initElements(driver,MainPage.class);
+        basePage = PageFactory.initElements(driver,BasePage.class);
         sundayPage = PageFactory.initElements(driver,SundayPage.class);
     }
 
@@ -34,13 +34,13 @@ public class AlexPMenu973Test {
     public void testAlexPMenu973(){ //throws Exception {    driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
 
         driver.get(baseUrl);
-        mainPage.selectDay("воскресенье");
+        basePage.selectDay("воскресенье");
         sundayPage.clickToCheckboxChicken();
         sundayPage.clickToCheckboxPumpkink();
         sundayPage.clickToCheckboxfishermanSoup();
         sundayPage.clickToBread();
-        mainPage.clickToMakeOrder();
-        mainPage.checkTextInReport(driver,"301");
+        basePage.clickToMakeOrder();
+        basePage.checkTextInReport(driver, "301");
 
 //        new Select(driver.findElement(By.id("days"))).selectByVisibleText("воскресенье");
 //        driver.findElement(By.xpath("(//input[@type='checkbox'])[5]")).click();

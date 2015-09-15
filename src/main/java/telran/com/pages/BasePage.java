@@ -1,6 +1,5 @@
 package telran.com.pages;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,8 +12,10 @@ import java.io.IOException;
 
 import static org.testng.AssertJUnit.assertTrue;
 
-
-public class MainPage extends Page {
+/**
+ * Created by tanyagaus on 9/15/15.
+ */
+public class BasePage extends  Page {
     public final int DISCOUNT = 50;
     public String baseUrl;
     @FindBy(id = "days")
@@ -23,26 +24,11 @@ public class MainPage extends Page {
     @FindBy(id = "orderSum")
     WebElement orderSum;
 
-    @FindBy(id = "validation")
-    WebElement validation;
-
-    public MainPage checkThatValidationTextDispyed(String message) { 
-        checkIfDisplayed(validation, message); 
-        return this; 
-    }
-
-    public MainPage clickToStartOverLink() {
-                 clickElement(startOverLink);
-                 return this; 
-    }
-
 
     //Days
     @FindBy(id = "makeOrder")
     WebElement makeOrderButton;
 
-    @FindBy(linkText = "Начать заново")
-    WebElement startOverLink;
 
     @FindBy(how = How.TAG_NAME, using = "h1")
     WebElement header;
@@ -53,42 +39,44 @@ public class MainPage extends Page {
     @FindBy(id = "account")
     WebElement accountSum;
 
-    public MainPage(WebDriver driver) {
+    @FindBy(linkText = "Начать заново")
+    WebElement startOverLink;
+
+    @FindBy(id = "validation")
+    WebElement validation;
+
+
+    public BasePage(WebDriver driver) {
         super(driver);
         this.PAGE_URL = baseUrl;
         PageFactory.initElements(driver, this);
     }
 
-    public MainPage openMainPage() {
+    public BasePage openMainPage() {
         driver.get(PAGE_URL);
         return this;
     }
 
-    public MainPage clickToMakeOrder() {
+
+    public BasePage clickToMakeOrder() {
         clickElement(makeOrderButton);
         return this;
     }
 
-    public MainPage selectDay(String day) {
+
+    public BasePage selectDay(String day) {
+
         new Select(days).selectByVisibleText(day);
         return this;
     }
 
     public double getOrderSum() {
-        double ordersum = 0;
+        double ordersum = 0.0;
         ordersum = Double.parseDouble(orderSum.getText());
         return ordersum;
     }
 
 
-    /**
-     *
-     */
-    /*public int getAccountSum() {
-        int accountsum = 15456;
-        accountsum = Integer.parseInt(accountSum.getText());
-        return accountsum;
-    }*/
     public void waitUntilMainPageIsLoaded() {
         try {
             waitUntilElementIsLoaded(days);
@@ -105,11 +93,20 @@ public class MainPage extends Page {
         assertTrue("Text " + text + " is not present in Menu report", element.isDisplayed());
     }
 
-    public void checkText(WebDriver driver, String text) {
-        String locator = "//*[contains(text(),'" + text + "')]";
-        WebElement element = driver.findElement(By.xpath(locator));
-        assertTrue("Text " + text + " is not present in Menu report", element.isDisplayed());
+    /*
+        public void checkText(WebDriver driver, String text) {
+            String locator = "//*[contains(text(),'" + text + "')]";
+            WebElement element = driver.findElement(By.xpath(locator));
+            assertTrue("Text " + text + " is not present in Menu report", element.isDisplayed());
+        }
+    */
+    public BasePage checkThatValidationTextDisplayed(String message) {
+        checkIfDisplayed(validation, message);
+        return this;
     }
 
-
+    public BasePage clickToStartOverLink() {
+        clickElement(startOverLink);
+        return this;
+    }
 }
