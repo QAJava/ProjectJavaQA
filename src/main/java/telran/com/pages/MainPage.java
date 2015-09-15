@@ -23,6 +23,19 @@ public class MainPage extends Page {
     @FindBy(id = "orderSum")
     WebElement orderSum;
 
+    @FindBy(id = "validation")
+    WebElement validation;
+
+    public MainPage checkThatValidationTextDispyed(String message) { 
+        checkIfDisplayed(validation, message); 
+        return this; 
+    }
+
+    public MainPage clickToStartOverLink() {
+                 clickElement(startOverLink);
+                 return this; 
+    }
+
 
     //Days
     @FindBy(id = "makeOrder")
@@ -51,15 +64,12 @@ public class MainPage extends Page {
         return this;
     }
 
-
     public MainPage clickToMakeOrder() {
         clickElement(makeOrderButton);
         return this;
     }
 
-
     public MainPage selectDay(String day) {
-
         new Select(days).selectByVisibleText(day);
         return this;
     }

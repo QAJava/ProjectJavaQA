@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -13,11 +14,8 @@ import java.util.Calendar;
 
 public class TuesdayPage extends Page {
     public String baseUrl;
-
-
     private WebElement webElement;
     public final int DISCOUNT = 50;
-
     public static String time;   //time variable.
     public static DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");   //DateFormat variable.
 
@@ -58,45 +56,41 @@ public class TuesdayPage extends Page {
         PageFactory.initElements(driver, this);
     }
 
-
     public TuesdayPage openMainPage() {
         driver.get(PAGE_URL);
         return this;
     }
 
+    public TuesdayPage selectDay(String day) {
+        new Select(days).selectByVisibleText(day);
+        return this;
+    }
 
-    static String getTime()
-    {
+    static String getTime() {
         Calendar cal = Calendar.getInstance();
         time = dateFormat.format(cal.getTime());   //Getting the current system time.
         return time;
     }
-
-
 
     public TuesdayPage clickToSalatCaesar(){
         salatCaesar.click();
         return this;
     }
 
-
     public TuesdayPage clickToSupPureBroccoli(){
         supPureBroccoli.click();
         return this;
     }
-
 
     public TuesdayPage clickToRaguSvininy(){
         raguSvininy.click();
         return this;
     }
 
-
     public TuesdayPage clickToHleb() {
         hleb.click();
         return this;
     }
-
 
     public void checkTextInReport (String  text){
         String locator = "//*[@id='history']/li[last()][contains(text(),'"+ text+"')]";
@@ -104,6 +98,11 @@ public class TuesdayPage extends Page {
        //assertTrue("Text " +text+ " is not present in Menu report",element.isDisplayed());
     }
 
+    public TuesdayPage checkThatSalatDisplyed(String message) {
+        checkIfDisplayed(salatCaesar, message);
+
+        return this;
+    }
 
     public void waitUntilMainPageIsLoaded() {
         try {
@@ -114,8 +113,6 @@ public class TuesdayPage extends Page {
             e.printStackTrace();
         }
     }
-
-
 
 
 }
