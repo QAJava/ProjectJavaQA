@@ -4,48 +4,46 @@ package telran.com;
  * Created by Anton on 22-Aug-15.
  */
 
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import telran.com.pages.MondayPage;
 
 import java.util.concurrent.TimeUnit;
-
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.fail;
 
 public class AntonMenu390Test {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
+    public MondayPage mondayPage;
 
-    @Before
+    @BeforeTest
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
-        baseUrl = "https://addons.mozilla.org/";
+        baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @Test
-    public void testMenu390() throws Exception {
-        driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
+    public void Anton390Test() throws Exception {
+        driver.get(baseUrl);
+       // mondayPage.selectDay("понедельник");
         new Select(driver.findElement(By.id("days"))).selectByVisibleText("понедельник");
-        driver.findElement(By.xpath("//input[@type='checkbox']")).click();
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[3]")).click();
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[4]")).click();
-        driver.findElement(By.id("makeOrder")).click();
-        try {
-            assertTrue(isElementPresent(By.xpath("//*[@id='history']/li[last()][contains(text(),'502 р')]")));
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
+        mondayPage.clickToCheckboxKasha()
+                  .clickToShvedStolaMo()
+                  .clickToPlovMo();
+        mondayPage.clickToMakeOrder();
+        Assert.assertEquals(mondayPage.getOrderSum(), 502);
     }
 
-    @After
+    @AfterTest
     public void tearDown() throws Exception {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();

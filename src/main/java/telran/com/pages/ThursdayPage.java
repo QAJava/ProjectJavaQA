@@ -64,6 +64,9 @@ public class ThursdayPage extends Page {
         return ordersum;
     }
 
+
+
+
     public void waitUntilmainPageIsLoaded() {
         try {
             waitUntilElementIsLoaded(days);

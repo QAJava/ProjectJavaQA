@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import telran.com.pages.MainPage;
+import telran.com.pages.BasePage;
 import telran.com.pages.WedensdayPage;
 
 import java.util.NoSuchElementException;
@@ -22,7 +22,7 @@ public class WedensdayTest {
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
-    public MainPage mainPage;
+    public BasePage basePage;
     public WedensdayPage wedensdayPage;
 
     @BeforeClass
@@ -30,7 +30,7 @@ public class WedensdayTest {
         driver = new FirefoxDriver();
         baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        mainPage = PageFactory.initElements(driver, MainPage.class);
+        basePage = PageFactory.initElements(driver, BasePage.class);
         wedensdayPage = PageFactory.initElements(driver, WedensdayPage.class);
 
     }
@@ -38,14 +38,14 @@ public class WedensdayTest {
     @Test
     public void case558BorisTest() {
         driver.get(baseUrl);
-        mainPage.selectDay("среда");
+        basePage.selectDay("среда");
         wedensdayPage.clickToKasha();
         wedensdayPage.clickToPure();
-        mainPage.clickToMakeOrder();
-        mainPage.checkTextInReport(driver, "Среда");
-        mainPage.checkTextInReport(driver, "72");
-        mainPage.checkTextInReport(driver, "Пюре");
-        mainPage.checkTextInReport(driver, "Каша пшённая");
+        basePage.clickToMakeOrder();
+        basePage.checkTextInReport(driver, "Среда");
+        basePage.checkTextInReport(driver, "72");
+        basePage.checkTextInReport(driver, "Пюре");
+        basePage.checkTextInReport(driver, "Каша пшённая");
     }
 
 

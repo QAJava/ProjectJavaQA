@@ -4,17 +4,17 @@ package telran.com;
  * Created by Anton on 24-Aug-15.
  */
 
-
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import telran.com.pages.MondayPage;
+import telran.com.pages.TuesdayPage;
 
 import java.util.concurrent.TimeUnit;
-
 import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.*;
 
@@ -23,6 +23,7 @@ public class AntonMenu422Test {
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
+    public TuesdayPage tuesdayPage;
 
     @BeforeTest(alwaysRun = true)
     public void setUp() throws Exception {
@@ -31,28 +32,9 @@ public class AntonMenu422Test {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
-
-
-
-
-    @Test
-    public void testMenu390() throws Exception {
-        driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
-        new Select(driver.findElement(By.id("days"))).selectByIndex(6);
-       // driver.findElement(By.xpath("//input[@type='checkbox']")).click();
-       // driver.findElement(By.xpath("(//input[@type='checkbox'])[3]")).click();
-       // driver.findElement(By.xpath("(//input[@type='checkbox'])[4]")).click();
-       // driver.findElement(By.id("makeOrder")).click();
-        try {
-            assertTrue(isElementPresent(By.xpath("//*[@id='history']/li[last()][contains(text(),'502 р')]")));
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-    }
-
     @Test
     public void testMenu422() throws Exception {
-        driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
+        driver.get(baseUrl);
         new Select(driver.findElement(By.id("days"))).selectByVisibleText("среда");
         try {
             assertFalse(driver.findElement(By.xpath("(//input[@type='checkbox'])[5]")).isSelected());
@@ -98,11 +80,7 @@ public class AntonMenu422Test {
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
-       /* try {
-            assertTrue(isElementPresent(By.xpath("//span[@id='orderSum'][contains(text(),'303')]")));
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }*/
+
         driver.findElement(By.id("makeOrder")).click();
         try {
             assertTrue(isElementPresent(By.xpath("//*[@id='history']/li[last()][contains(text(),'каша пшеная, отбивная из курицы, хлеб.')]")));
@@ -152,5 +130,7 @@ public class AntonMenu422Test {
             acceptNextAlert = true;
         }
     }
+
 }
+
 
