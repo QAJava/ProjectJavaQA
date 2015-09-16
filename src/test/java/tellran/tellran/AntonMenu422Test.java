@@ -11,7 +11,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import telran.com.pages.TuesdayPage;
-
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertTrue;
