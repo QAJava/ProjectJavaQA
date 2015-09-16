@@ -27,6 +27,9 @@ public class AlexPMondayPage extends Page {
     @FindBy(id = "makeOrder")
     WebElement makeOrderButton;
     private WebElement webElement;
+    @FindBy(xpath = "//a")
+    WebElement restart;
+
 
     public AlexPMondayPage(WebDriver driver) {
         super(driver);
@@ -41,9 +44,13 @@ public class AlexPMondayPage extends Page {
         new Select(days).selectByVisibleText(day);
         return this;
     }
+    public AlexPMondayPage clickRestart(){
+        restart.click();
+        return this;
+    }
 //    public double getOrderSum(){
 //        double orderSum = 0;
-//        orderSum = Double.parseDouble(orderSum.getText)
+//        orderSum = Double.parseDouble(orderSum.getText);
 //        return orderSum;
 //
 //    }
