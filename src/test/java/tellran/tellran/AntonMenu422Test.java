@@ -1,4 +1,4 @@
-package telran.com;
+package tellran;
 
 /**
  * Created by Anton on 24-Aug-15.
@@ -7,23 +7,22 @@ package telran.com;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import telran.com.pages.MondayPage;
 import telran.com.pages.TuesdayPage;
 
 import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.*;
 
 public class AntonMenu422Test {
+    public TuesdayPage tuesdayPage;
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
-    public TuesdayPage tuesdayPage;
 
     @BeforeTest(alwaysRun = true)
     public void setUp() throws Exception {

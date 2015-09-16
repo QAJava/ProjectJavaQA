@@ -1,22 +1,19 @@
-package telran.com;
-
-/**
- * Created by Iakov Volf on 8/19/2015.
- */
+package tellran;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import telran.com.pages.AlexPMondayPage;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.testng.Assert.fail;
 
-public class PrichislovMenu721Test {
+public class AlexPMondayTest {
+    public AlexPMondayPage mondayPage;
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
@@ -27,36 +24,20 @@ public class PrichislovMenu721Test {
         driver = new FirefoxDriver();
         baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        mondayPage = PageFactory.initElements(driver,AlexPMondayPage.class);
+
     }
 
     @Test
-    public void testMenu721prichislov() throws Exception {
-        driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
-        new Select(driver.findElement(By.id("days"))).selectByVisibleText("пятница");
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[5]")).click();
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[6]")).click();
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[8]")).click();
-        driver.findElement(By.id("makeOrder")).click();
-        try {
-            assertTrue(isElementPresent(By.xpath("//*[@id='history']/li[last()][contains(text(),'пятница')]")));
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertTrue(isElementPresent(By.xpath("//*[@id='history']/li[last()][contains(text(),'салат мистерия весны')]")));
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertTrue(isElementPresent(By.xpath("//*[@id='history']/li[last()][contains(text(),'лагман')]")));
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertTrue(isElementPresent(By.xpath("//*[@id='history']/li[last()][contains(text(),' капуста жареная. Списано с личного счета 125 р.')]")));
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
+    public void testMenuAlexP() {
+        driver.get(baseUrl);
+        mondayPage.selectDay("понедельник");
+        mondayPage.checkThatKashaDisplyed("Point menu - Kasha - is notdisplayed");
+        mondayPage.clickToKasha();
+        mondayPage.clickToPlov();
+        mondayPage.clickToMakeOrder();
+        mondayPage.checkTextInReport(driver,"152");
+
     }
 
     @AfterTest
@@ -85,7 +66,6 @@ public class PrichislovMenu721Test {
             return false;
         }
     }
-
     private String closeAlertAndGetItsText() {
         try {
             Alert alert = driver.switchTo().alert();
@@ -101,4 +81,3 @@ public class PrichislovMenu721Test {
         }
     }
 }
-

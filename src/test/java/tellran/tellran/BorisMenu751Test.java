@@ -1,4 +1,4 @@
-package telran.com;
+package tellran;
 
 import org.junit.After;
 import org.junit.Before;

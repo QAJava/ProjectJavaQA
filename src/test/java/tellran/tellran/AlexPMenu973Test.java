@@ -1,46 +1,52 @@
-package telran.com;
-
-
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.WebDriver;
+package tellran;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import telran.com.pages.SvetaThursdayPage;
+import telran.com.pages.BasePage;
+import telran.com.pages.SundayPage;
 
-import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.fail;
 
-public class SvetaMenuTest {
-    public SvetaThursdayPage svetaThursdayPage;
+public class AlexPMenu973Test {
+    public BasePage basePage;
+    public SundayPage sundayPage;
     private WebDriver driver;
     private String baseUrl;
-    private StringBuffer verificationErrors = new StringBuffer();
     private boolean acceptNextAlert = true;
+    private StringBuffer verificationErrors = new StringBuffer();
 
-    @BeforeClass
+    @BeforeTest
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
-        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-        svetaThursdayPage = PageFactory.initElements(driver, SvetaThursdayPage.class);
-                }
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        basePage = PageFactory.initElements(driver,BasePage.class);
+        sundayPage = PageFactory.initElements(driver,SundayPage.class);
+    }
 
     @Test
-    public void testMenuThur() {
-        driver.get(baseUrl);
-        svetaThursdayPage.selectDay("четверг");
-        svetaThursdayPage.clickToSalat();
-        svetaThursdayPage.clickToZharkoe();
-        Assert.assertEquals(svetaThursdayPage.getOrderSum(), 50);
+    public void testAlexPMenu973(){ //throws Exception {    driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
 
+        driver.get(baseUrl);
+        basePage.selectDay("воскресенье");
+        sundayPage.clickToCheckboxChicken();
+        sundayPage.clickToCheckboxPumpkink();
+        sundayPage.clickToCheckboxfishermanSoup();
+        sundayPage.clickToBread();
+        basePage.clickToMakeOrder();
+        basePage.checkTextInReport(driver, "301");
+
+//        new Select(driver.findElement(By.id("days"))).selectByVisibleText("воскресенье");
+//        driver.findElement(By.xpath("(//input[@type='checkbox'])[5]")).click();
+//        driver.findElement(By.xpath("(//input[@type='checkbox'])[6]")).click();
+//        driver.findElement(By.xpath("(//input[@type='checkbox'])[7]")).click();
+//        driver.findElement(By.xpath("(//input[@type='checkbox'])[8]")).click();
+//        driver.findElement(By.id("makeOrder")).click();
     }
 
     @AfterTest

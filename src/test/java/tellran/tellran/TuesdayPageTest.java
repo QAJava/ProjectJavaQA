@@ -1,7 +1,7 @@
 /**
  * Created by tanyagaus on 9/15/15.
  */
-package telran.com;
+package tellran;
 
 
 import org.openqa.selenium.Alert;
@@ -18,7 +18,6 @@ import telran.com.pages.AlexPMondayPage;
 import telran.com.pages.BasePage;
 import telran.com.pages.TuesdayPage;
 
-
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
@@ -26,15 +25,15 @@ import static org.testng.Assert.fail;
 
 public class TuesdayPageTest {
 
+    public final int DISCOUNT = 50;
+    public BasePage basePage;
+    public TuesdayPage tuesdayPage;
+    public AlexPMondayPage mondayPage;
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new
             StringBuffer();
-    public BasePage basePage;
-    public TuesdayPage tuesdayPage;
-    public AlexPMondayPage mondayPage;
-    public final int DISCOUNT = 50;
 
     //public static String time;   //time variable.
     //public static DateFormat dateFormat = new

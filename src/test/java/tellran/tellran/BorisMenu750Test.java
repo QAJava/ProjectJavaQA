@@ -1,5 +1,4 @@
-package telran.com;
-
+package tellran;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -10,9 +9,10 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.testng.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
-public class PrichislovMenu770Test {
+public class BorisMenu750Test {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
@@ -21,28 +21,18 @@ public class PrichislovMenu770Test {
     @BeforeTest
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
-        baseUrl = "https://kontur.ru/";
+        baseUrl = "http://change-this-to-the-site-you-are-testing/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @Test
-    public void testPrichislovMenu770TestHtml() throws Exception {
+    public void testBorisMenu750() throws Exception {
         driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
-        new Select(driver.findElement(By.id("days"))).selectByVisibleText("воскресенье");
-        try {
-            assertFalse(driver.findElement(By.xpath("(//input[@type='checkbox'])[7]")).isSelected());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
+        new Select(driver.findElement(By.id("days"))).selectByVisibleText("суббота");
+        driver.findElement(By.xpath("(//input[@type='checkbox'])[6]")).click();
         driver.findElement(By.xpath("(//input[@type='checkbox'])[7]")).click();
         try {
-            assertTrue(driver.findElement(By.xpath("(//input[@type='checkbox'])[7]")).isSelected());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        driver.findElement(By.id("makeOrder")).click();
-        try {
-            assertTrue(isElementPresent(By.xpath("//*[@id='history']/li[last()][contains(text(),'100 ')]")));
+            assertTrue(isElementPresent(By.xpath("//*[@id='orderSum'][contains(text(),'181')]")));
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }

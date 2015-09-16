@@ -1,55 +1,49 @@
-package telran.com;
+package tellran;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.WebDriver;
+/**
+ * Created by Anton on 22-Aug-15.
+ */
+
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import telran.com.pages.BasePage;
-import telran.com.pages.WedensdayPage;
+import telran.com.pages.MondayPage;
 
-import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.fail;
 
-public class WedensdayTest {
-    public WebDriver driver;
+public class AntonMenu390Test {
+    public MondayPage mondayPage;
+    private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
-    public BasePage basePage;
-    public WedensdayPage wedensdayPage;
 
-    @BeforeClass
+    @BeforeTest
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        basePage = PageFactory.initElements(driver, BasePage.class);
-        wedensdayPage = PageFactory.initElements(driver, WedensdayPage.class);
-
     }
 
     @Test
-    public void case558BorisTest() {
+    public void Anton390Test() throws Exception {
         driver.get(baseUrl);
-        basePage.selectDay("среда");
-        wedensdayPage.clickToKasha();
-        wedensdayPage.clickToPure();
-        basePage.clickToMakeOrder();
-        basePage.checkTextInReport(driver, "Среда");
-        basePage.checkTextInReport(driver, "72");
-        basePage.checkTextInReport(driver, "Пюре");
-        basePage.checkTextInReport(driver, "Каша пшённая");
+       // mondayPage.selectDay("понедельник");
+        new Select(driver.findElement(By.id("days"))).selectByVisibleText("понедельник");
+        mondayPage.clickToCheckboxKasha()
+                  .clickToShvedStolaMo()
+                  .clickToPlovMo();
+        mondayPage.clickToMakeOrder();
+        Assert.assertEquals(mondayPage.getOrderSum(), 502);
     }
 
-
-    @AfterClass
+    @AfterTest
     public void tearDown() throws Exception {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
@@ -91,3 +85,4 @@ public class WedensdayTest {
         }
     }
 }
+
