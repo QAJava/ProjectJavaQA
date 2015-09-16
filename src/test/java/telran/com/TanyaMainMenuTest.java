@@ -12,12 +12,12 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 import static org.testng.FileAssert.fail;
 
-public class TanyaMainMenuTest{
+ public class TanyaMainMenuTest{
 
-        private WebDriver driver;
-        private String baseUrl;
-        private boolean acceptNextAlert = true;
-        private StringBuffer verificationErrors = new StringBuffer();
+    private WebDriver driver;
+    private String baseUrl;
+    private boolean acceptNextAlert = true;
+    private StringBuffer verificationErrors = new StringBuffer();
 
         @BeforeTest
         public void setUp() throws Exception {
