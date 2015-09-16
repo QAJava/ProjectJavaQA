@@ -14,7 +14,6 @@ import java.util.Calendar;
 public class TuesdayPage extends Page {
         public String baseUrl;
 
-
         private WebElement webElement;
         public final int DISCOUNT = 50;
 

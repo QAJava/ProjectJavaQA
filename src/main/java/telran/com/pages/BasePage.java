@@ -16,6 +16,7 @@ import static org.testng.AssertJUnit.assertTrue;
  * Created by tanyagaus on 9/15/15.
  */
 public class BasePage extends  Page {
+
     public final int DISCOUNT = 50;
     public String baseUrl;
     @FindBy(id = "days")
@@ -100,6 +101,7 @@ public class BasePage extends  Page {
             assertTrue("Text " + text + " is not present in Menu report", element.isDisplayed());
         }
     */
+
     public BasePage checkThatValidationTextDisplayed(String message) {
         checkIfDisplayed(validation, message);
         return this;

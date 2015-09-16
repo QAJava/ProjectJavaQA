@@ -65,13 +65,15 @@ public class TuesdayPageTest {
         basePage.checkTextInReport(driver, "414");
         // basePage.clickToStartOverLink();
         // basePage.selectDay("вторник");
-        //tuesdayPage.checkThatSalatDisplyed("Point menu -        Salat - is not displayed");
-        tuesdayPage.clickToSupPureBroccoli().clickToRaguSvininy()
-                .clickToHleb();
+        //tuesdayPage.checkThatSalatDisplyed("Point menu - Salat - is not displayed");
+        tuesdayPage.clickToSupPureBroccoli()
+                    .clickToRaguSvininy()
+                    .clickToHleb();
         Assert.assertEquals(basePage.getOrderSum(), 381.0);
         basePage.clickToMakeOrder();
         basePage.checkTextInReport(driver, "331");
-        tuesdayPage.clickToRaguSvininy().clickToHleb();
+        tuesdayPage.clickToRaguSvininy()
+                   .clickToHleb();
         Assert.assertEquals(basePage.getOrderSum(), 251.0);
         basePage.clickToMakeOrder();
         basePage.checkTextInReport(driver, "201");
@@ -79,7 +81,9 @@ public class TuesdayPageTest {
         Assert.assertEquals(basePage.getOrderSum(), 1.0);
         basePage.clickToMakeOrder();
         basePage.checkTextInReport(driver, "0 р.");
+
         basePage.clickToStartOverLink();
+
         basePage.selectDay("понедельник");
         mondayPage.checkThatKashaDisplyed("Point menu - Kasha - is not displayed");
         mondayPage.clickToKasha();
@@ -97,9 +101,9 @@ public class TuesdayPageTest {
         basePage.selectDay("вторник");
         tuesdayPage.checkThatSalatDisplyed("Point menu - Salat - is not displayed");
         basePage.clickToMakeOrder();
-        //basePage.checkThatValidationTextDisplayed("Нельзя сделать пустой заказ!!!");
-        basePage.checkThatValidationTextDisplayed("Go to hell");
-        tuesdayPage.clickToSalatCaesar().clickToHleb();
+        basePage.checkThatValidationTextDisplayed("Нельзя сделать пустой заказ!!!");
+        tuesdayPage.clickToSalatCaesar()
+                   .clickToHleb();
         Assert.assertEquals(basePage.getOrderSum(), 83.54);
         basePage.clickToMakeOrder();
         basePage.checkTextInReport(driver, "34");
