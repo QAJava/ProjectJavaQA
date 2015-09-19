@@ -5,12 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 public class WedensdayPage extends Page {
     public String baseUrl;
     public WebDriver driver;
-
     private WebElement webElement;
-
 
     //Days
 
@@ -25,13 +26,16 @@ public class WedensdayPage extends Page {
     @FindBy(xpath = "//*[@id='menu']/div[@key='3']/div[5]/input")
     WebElement chlebCheckbox;
 
-
     public WedensdayPage(WebDriver driver) {
         super(driver);
         this.PAGE_URL = baseUrl;
         PageFactory.initElements(driver, this);
     }
 
+    public WedensdayPage openBasePage() {
+        driver.get(PAGE_URL);
+        return this;
+    }
 
     public WedensdayPage clickToKasha() {
         kashaPshenayaCheckbox.click();
@@ -59,10 +63,11 @@ public class WedensdayPage extends Page {
     }
 
 
-//    public MainPage clickOnSignUpDoctorButton() {
-//        clickElement(doctorButton);
-//        return this;
-//    }
+    public WedensdayPage checkThatHlebDisplyed(String message) {
+        checkIfDisplayed(chlebCheckbox, message);
+        return this;
+    }
+
 
 
 }

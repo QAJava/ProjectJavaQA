@@ -1,9 +1,10 @@
-package telran.com;
+package tellran;
 
 /**
  * Created by Anton on 22-Aug-15.
  */
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -11,11 +12,12 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import telran.com.pages.MondayPage;
-
 import java.util.concurrent.TimeUnit;
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
+import org.openqa.selenium.support.PageFactory;
+import telran.com.pages.MondayPage;
+import telran.com.pages.BasePage;
 
 public class AntonMenu390Test {
     private WebDriver driver;
@@ -23,24 +25,29 @@ public class AntonMenu390Test {
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
     public MondayPage mondayPage;
+    public BasePage basePage;
 
     @BeforeTest
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        basePage = PageFactory.initElements(driver, BasePage.class);
+        mondayPage = PageFactory.initElements(driver, MondayPage.class);
     }
 
     @Test
     public void Anton390Test() throws Exception {
         driver.get(baseUrl);
-       // mondayPage.selectDay("понедельник");
-        new Select(driver.findElement(By.id("days"))).selectByVisibleText("понедельник");
+        basePage.selectDay("понедельник");
+        basePage.clickToMakeOrder();
+        basePage.checkThatValidationTextDisplayed("Нельзя сделать пустой заказ!!!");
         mondayPage.clickToCheckboxKasha()
                   .clickToShvedStolaMo()
                   .clickToPlovMo();
-        mondayPage.clickToMakeOrder();
-        Assert.assertEquals(mondayPage.getOrderSum(), 502);
+        Assert.assertEquals(basePage.getOrderSum(), 552.1);
+        basePage.clickToMakeOrder();
+        basePage.checkTextInReport(driver, "502 р");
     }
 
     @AfterTest

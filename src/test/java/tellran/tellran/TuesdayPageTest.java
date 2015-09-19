@@ -1,7 +1,7 @@
 /**
  * Created by tanyagaus on 9/15/15.
  */
-package telran.com;
+package tellran;
 
 
 import org.openqa.selenium.Alert;
@@ -18,7 +18,6 @@ import telran.com.pages.AlexPMondayPage;
 import telran.com.pages.BasePage;
 import telran.com.pages.TuesdayPage;
 
-
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
@@ -26,15 +25,15 @@ import static org.testng.Assert.fail;
 
 public class TuesdayPageTest {
 
+    public final int DISCOUNT = 50;
+    public BasePage basePage;
+    public TuesdayPage tuesdayPage;
+    public AlexPMondayPage mondayPage;
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new
             StringBuffer();
-    public BasePage basePage;
-    public TuesdayPage tuesdayPage;
-    public AlexPMondayPage mondayPage;
-    public final int DISCOUNT = 50;
 
     //public static String time;   //time variable.
     //public static DateFormat dateFormat = new
@@ -65,13 +64,15 @@ public class TuesdayPageTest {
         basePage.checkTextInReport(driver, "414");
         // basePage.clickToStartOverLink();
         // basePage.selectDay("вторник");
-        //tuesdayPage.checkThatSalatDisplyed("Point menu -        Salat - is not displayed");
-        tuesdayPage.clickToSupPureBroccoli().clickToRaguSvininy()
-                .clickToHleb();
+        //tuesdayPage.checkThatSalatDisplyed("Point menu - Salat - is not displayed");
+        tuesdayPage.clickToSupPureBroccoli()
+                    .clickToRaguSvininy()
+                    .clickToHleb();
         Assert.assertEquals(basePage.getOrderSum(), 381.0);
         basePage.clickToMakeOrder();
         basePage.checkTextInReport(driver, "331");
-        tuesdayPage.clickToRaguSvininy().clickToHleb();
+        tuesdayPage.clickToRaguSvininy()
+                   .clickToHleb();
         Assert.assertEquals(basePage.getOrderSum(), 251.0);
         basePage.clickToMakeOrder();
         basePage.checkTextInReport(driver, "201");
@@ -79,7 +80,9 @@ public class TuesdayPageTest {
         Assert.assertEquals(basePage.getOrderSum(), 1.0);
         basePage.clickToMakeOrder();
         basePage.checkTextInReport(driver, "0 р.");
+
         basePage.clickToStartOverLink();
+
         basePage.selectDay("понедельник");
         mondayPage.checkThatKashaDisplyed("Point menu - Kasha - is not displayed");
         mondayPage.clickToKasha();
@@ -97,9 +100,9 @@ public class TuesdayPageTest {
         basePage.selectDay("вторник");
         tuesdayPage.checkThatSalatDisplyed("Point menu - Salat - is not displayed");
         basePage.clickToMakeOrder();
-        //basePage.checkThatValidationTextDisplayed("Нельзя сделать пустой заказ!!!");
-        basePage.checkThatValidationTextDisplayed("Go to hell");
-        tuesdayPage.clickToSalatCaesar().clickToHleb();
+        basePage.checkThatValidationTextDisplayed("Нельзя сделать пустой заказ!!!");
+        tuesdayPage.clickToSalatCaesar()
+                   .clickToHleb();
         Assert.assertEquals(basePage.getOrderSum(), 83.54);
         basePage.clickToMakeOrder();
         basePage.checkTextInReport(driver, "34");

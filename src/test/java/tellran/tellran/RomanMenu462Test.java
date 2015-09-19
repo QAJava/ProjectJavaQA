@@ -1,4 +1,4 @@
-package telran.com.testsRoman;
+package tellran;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;

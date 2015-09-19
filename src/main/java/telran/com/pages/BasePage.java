@@ -16,25 +16,23 @@ import static org.testng.AssertJUnit.assertTrue;
  * Created by tanyagaus on 9/15/15.
  */
 public class BasePage extends  Page {
+
     public final int DISCOUNT = 50;
     public String baseUrl;
-    @FindBy(id = "days")
-    WebElement days;
 
-    @FindBy(id = "orderSum")
-    WebElement orderSum;
+    @FindBy(how = How.TAG_NAME, using = "h1")
+    WebElement header;
 
 
     //Days
     @FindBy(id = "makeOrder")
     WebElement makeOrderButton;
 
+    @FindBy(id = "orderSum")
+    WebElement orderSum;
 
-    @FindBy(how = How.TAG_NAME, using = "h1")
-    WebElement header;
-
-    @FindBy(xpath = "//*[@id='menu']/div[@key='1']/div[1]/input")
-    WebElement kashaMannayaMo;
+    @FindBy(id = "days")
+    WebElement days;
 
     @FindBy(id = "account")
     WebElement accountSum;
@@ -65,7 +63,6 @@ public class BasePage extends  Page {
 
 
     public BasePage selectDay(String day) {
-
         new Select(days).selectByVisibleText(day);
         return this;
     }
@@ -100,6 +97,7 @@ public class BasePage extends  Page {
             assertTrue("Text " + text + " is not present in Menu report", element.isDisplayed());
         }
     */
+
     public BasePage checkThatValidationTextDisplayed(String message) {
         checkIfDisplayed(validation, message);
         return this;

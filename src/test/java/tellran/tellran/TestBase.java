@@ -1,4 +1,4 @@
-package telran.com;
+package tellran;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;

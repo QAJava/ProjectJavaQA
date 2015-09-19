@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -13,7 +12,6 @@ import java.util.Calendar;
 
 public class TuesdayPage extends Page {
         public String baseUrl;
-
 
         private WebElement webElement;
         public final int DISCOUNT = 50;

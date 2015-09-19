@@ -1,4 +1,4 @@
-package telran.com;
+package tellran;
 
 
 import org.openqa.selenium.*;
@@ -7,7 +7,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
 import java.util.concurrent.TimeUnit;
+
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 import static org.testng.FileAssert.fail;

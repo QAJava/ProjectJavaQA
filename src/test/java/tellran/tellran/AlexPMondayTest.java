@@ -1,45 +1,46 @@
-package telran.com;
+package tellran;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import telran.com.pages.AlexPMondayPage;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.testng.Assert.fail;
 
-public class BorisMenu751Test {
+public class AlexPMondayTest {
+    public AlexPMondayPage mondayPage;
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
-    @Before
+    @BeforeTest
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
-        baseUrl = "http://change-this-to-the-site-you-are-testing/";
+        baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        mondayPage = PageFactory.initElements(driver,AlexPMondayPage.class);
+
     }
 
     @Test
-    public void testBorisMenu751() throws Exception {
-        driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
-        new Select(driver.findElement(By.id("days"))).selectByVisibleText("суббота");
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[6]")).click();
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[7]")).click();
-        driver.findElement(By.xpath("//*[@id='makeOrder']")).click();
-        try {
-            assertTrue(isElementPresent(By.xpath("//*[@id='history']/li[last()][contains(text(),'Списано с личного счета 131 р.')]")));
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
+    public void testMenuAlexP() {
+        driver.get(baseUrl);
+        mondayPage.selectDay("понедельник");
+        mondayPage.checkThatKashaDisplyed("Point menu - Kasha - is notdisplayed");
+        mondayPage.clickToKasha();
+        mondayPage.clickToPlov();
+        mondayPage.clickToMakeOrder();
+        mondayPage.checkTextInReport(driver,"152");
+
     }
 
-    @After
+    @AfterTest
     public void tearDown() throws Exception {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
@@ -65,7 +66,6 @@ public class BorisMenu751Test {
             return false;
         }
     }
-
     private String closeAlertAndGetItsText() {
         try {
             Alert alert = driver.switchTo().alert();
