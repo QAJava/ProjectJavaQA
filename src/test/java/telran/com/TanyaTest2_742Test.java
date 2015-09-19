@@ -6,172 +6,54 @@ package telran.com;
         import static org.testng.Assert.fail;
         import org.openqa.selenium.*;
         import org.openqa.selenium.firefox.FirefoxDriver;
+        import org.openqa.selenium.support.PageFactory;
         import org.openqa.selenium.support.ui.Select;
         import org.testng.FileAssert;
         import org.testng.annotations.AfterTest;
         import org.testng.annotations.BeforeTest;
         import org.testng.annotations.Test;
+        import telran.com.pages.BasePage;
+        import telran.com.pages.Page;
+        import telran.com.pages.SundayPage;
+        import telran.com.pages.TuesdayPage;
 
 public class TanyaTest2_742Test {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
-
-    public class TanyaMainMenuTest{
-
-        private WebDriver driver;
-        private String baseUrl;
-        private boolean acceptNextAlert = true;
-        private StringBuffer verificationErrors = new StringBuffer();
-
+    public BasePage basePage;
+    public TuesdayPage tuesdayPage;
 
     @BeforeTest
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        basePage = PageFactory.initElements(driver, BasePage.class);
+        tuesdayPage = PageFactory.initElements(driver, TuesdayPage.class);
     }
 
-    @Test
-    public void test742() throws Exception {
-        driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
-        new Select(driver.findElement(By.id("days"))).selectByVisibleText("пятница");
-        // ERROR: Caught exception [Error: locator strategy either id or name must be specified explicitly.]
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[5]")).click();
-        // ERROR: Caught exception [Error: locator strategy either id or name must be specified explicitly.]
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[6]")).click();
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[9]")).click();
-        driver.findElement(By.id("makeOrder")).click();
-        try {
-            assertTrue(isElementPresent(By.cssSelector("li")));
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
+        @Test
+        public void TanyaTest2_742Test () {
+            driver.get(baseUrl);
+            basePage.selectDay("Вторник");
+            tuesdayPage.clickToSalatCaesar();
+            tuesdayPage.clickToSupPureBroccoli();
+
+            basePage.clickToMakeOrder();
+            basePage.checkTextInReport(driver, "163");
+
         }
-    }
 
-    @AfterTest
-    public void tearDown() throws Exception {
-        driver.quit();
-        String verificationErrorString = verificationErrors.toString();
-        if (!"".equals(verificationErrorString)) {
-            fail(verificationErrorString);
-        }
-    }
-
-    private boolean isElementPresent(By by) {
-        try {
-            driver.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
-
-    private boolean isAlertPresent() {
-        try {
-            driver.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
-
-    private String closeAlertAndGetItsText() {
-        try {
-            Alert alert = driver.switchTo().alert();
-            String alertText = alert.getText();
-            if (acceptNextAlert) {
-                alert.accept();
-            } else {
-                alert.dismiss();
+        @AfterTest
+        public void tearDown ()throws Exception {
+            driver.quit();
+            String verificationErrorString = verificationErrors.toString();
+            if (!"".equals(verificationErrorString)) {
+                fail(verificationErrorString);
             }
-            return alertText;
-        } finally {
-            acceptNextAlert = true;
         }
-    }
-}
-
-
-    @BeforeTest
-    public void setUp() throws Exception {
-        driver = new FirefoxDriver();
-        baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    }
-
-    @Test
-    public void testMenu2() throws Exception {
-        driver.get("https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html");
-        new Select(driver.findElement(By.id("days"))).selectByVisibleText("вторник");
-        try {
-            assertFalse(driver.findElement(By.xpath("(//input[@type='checkbox'])[5]")).isSelected());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[5]")).click();
-        try {
-            assertTrue(driver.findElement(By.xpath("(//input[@type='checkbox'])[5]")).isSelected());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertFalse(driver.findElement(By.xpath("(//input[@type='checkbox'])[6]")).isSelected());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[6]")).click();
-        try {
-            assertTrue(driver.findElement(By.xpath("(//input[@type='checkbox'])[6]")).isSelected());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertFalse(driver.findElement(By.xpath("(//input[@type='checkbox'])[7]")).isSelected());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[7]")).click();
-        try {
-            assertTrue(driver.findElement(By.xpath("(//input[@type='checkbox'])[7]")).isSelected());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertFalse(driver.findElement(By.xpath("(//input[@type='checkbox'])[8]")).isSelected());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[8]")).click();
-        try {
-            assertTrue(driver.findElement(By.xpath("(//input[@type='checkbox'])[8]")).isSelected());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        driver.findElement(By.id("makeOrder")).click();
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[8]")).click();
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[7]")).click();
-        try {
-            assertTrue(isElementPresent(By.cssSelector("li")));
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertTrue(isElementPresent(By.xpath("//span[@id='orderSum'][contains(text(), '251') ]")));
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-    }
-
-    @AfterTest
-    public void tearDown() throws Exception {
-        driver.quit();
-        String verificationErrorString = verificationErrors.toString();
-        if (!"".equals(verificationErrorString)) {
-            FileAssert.fail(verificationErrorString);
-        }
-    }
 
     private boolean isElementPresent(By by) {
         try {

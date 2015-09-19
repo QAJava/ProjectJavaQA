@@ -33,17 +33,12 @@ public class TuesdayPage extends Page {
         WebElement raguSvininy;
         @FindBy(xpath = "//*[@id='menu']/div[@key='2']/div[4]/input")
         WebElement hleb;
-        /**
-         * Elements of TuesdayPage area
-         */
         @FindBy(id = "days")
         protected WebElement days;
 
         @FindBy(id = "orderSum")
         protected WebElement orderSum;
-        /**
-         * Button of TuesdayPage area
-         */
+
         @FindBy(id = "makeOrder")
         protected WebElement makeOrderButton;
 
