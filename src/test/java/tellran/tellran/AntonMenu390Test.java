@@ -1,4 +1,4 @@
-package telran.com;
+package tellran;
 
 /**
  * Created by Anton on 22-Aug-15.
@@ -12,19 +12,19 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import telran.com.pages.BasePage;
-import telran.com.pages.AlexPMondayPage;
-
 import java.util.concurrent.TimeUnit;
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 import org.openqa.selenium.support.PageFactory;
+import telran.com.pages.MondayPage;
+import telran.com.pages.BasePage;
+
 public class AntonMenu390Test {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
-    public AlexPMondayPage mondayPage;
+    public MondayPage mondayPage;
     public BasePage basePage;
 
     @BeforeTest
@@ -33,19 +33,20 @@ public class AntonMenu390Test {
         baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         basePage = PageFactory.initElements(driver, BasePage.class);
-        mondayPage = PageFactory.initElements(driver, AlexPMondayPage.class);
+        mondayPage = PageFactory.initElements(driver, MondayPage.class);
     }
 
     @Test
     public void Anton390Test() throws Exception {
         driver.get(baseUrl);
-        mondayPage.selectDay("понедельник");
-        //new Select(driver.findElement(By.id("days"))).selectByVisibleText("понедельник");
-        mondayPage.clickToKasha()
-                  .clickToBuffet()
-                  .clickToPlov();
+        basePage.selectDay("понедельник");
+        basePage.clickToMakeOrder();
+        basePage.checkThatValidationTextDisplayed("Нельзя сделать пустой заказ!!!");
+        mondayPage.clickToCheckboxKasha()
+                  .clickToShvedStolaMo()
+                  .clickToPlovMo();
         Assert.assertEquals(basePage.getOrderSum(), 552.1);
-        mondayPage.clickToMakeOrder();
+        basePage.clickToMakeOrder();
         basePage.checkTextInReport(driver, "502 р");
     }
 

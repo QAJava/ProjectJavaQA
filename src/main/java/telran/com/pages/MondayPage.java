@@ -42,16 +42,6 @@ public class MondayPage extends Page {
         return this;
     }
 
-    public MondayPage selectDay(String day) {
-        new Select(days).selectByVisibleText(day);
-        return this;
-    }
-
-    public MondayPage clickToMakeOrder() {
-        clickElement(makeOrderButton);
-        return this;
-    }
-
     public MondayPage checkThatKashaDisplyed(String message) {
         checkIfDisplayed(kashaMannayaMo, message);
         return this;
