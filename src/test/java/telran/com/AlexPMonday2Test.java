@@ -18,6 +18,7 @@ import telran.com.pages.Page;
 
 public class AlexPMonday2Test {
     public AlexPMondayPage mondayPage;
+
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;

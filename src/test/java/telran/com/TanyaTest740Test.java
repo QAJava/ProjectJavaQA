@@ -9,44 +9,53 @@ package telran.com;
         import org.openqa.selenium.support.PageFactory;
         import org.openqa.selenium.support.ui.Select;
         import org.testng.FileAssert;
-        import org.testng.annotations.AfterTest;
-        import org.testng.annotations.BeforeTest;
-        import org.testng.annotations.Test;
-        import telran.com.pages.BasePage;
-        import telran.com.pages.Page;
-        import telran.com.pages.SundayPage;
-        import telran.com.pages.TuesdayPage;
+        import org.testng.annotations.*;
+        import telran.com.pages.*;
 
-public class TanyaTest2_742Test {
+public class TanyaTest740Test {
+    public TuesdayTanyaStPage tuesdayTanyaStPage;
+    public BasePage basePage;
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
-    public BasePage basePage;
-    public TuesdayPage tuesdayPage;
 
-    @BeforeTest
+
+
+    @BeforeClass(alwaysRun = true)
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        basePage = PageFactory.initElements(driver, BasePage.class);
-        tuesdayPage = PageFactory.initElements(driver, TuesdayPage.class);
+        tuesdayTanyaStPage = PageFactory.initElements(driver, TuesdayTanyaStPage.class);
     }
 
         @Test
-        public void TanyaTest2_742Test () {
-            driver.get(baseUrl);
-            basePage.selectDay("Вторник");
-            tuesdayPage.clickToSalatCaesar();
-            tuesdayPage.clickToSupPureBroccoli();
+        public void  TanyaTest740Test(){
 
-            basePage.clickToMakeOrder();
-            basePage.checkTextInReport(driver, "163");
+
+            driver.get(baseUrl);
+            tuesdayTanyaStPage.selectDay("вторник");
+            tuesdayTanyaStPage.clickToSupPureBroccoli();
+            tuesdayTanyaStPage.clickToHleb();
+            tuesdayTanyaStPage.clickToMakeOrder();
+            tuesdayTanyaStPage.checkTextInReport(driver, "81");
+}
+            @Test
+            public void TanyaTest741Test (){
+                //driver.get(baseUrl);
+               // tuesdayTanyaStPage.selectDay("вторник");
+                tuesdayTanyaStPage.clickToSalatCaesar();
+                tuesdayTanyaStPage.clickToSupPureBroccoli();
+                tuesdayTanyaStPage.clickToRaguSvininy();
+                tuesdayTanyaStPage.clickToHleb();
+                tuesdayTanyaStPage.clickToMakeOrder();
+                tuesdayTanyaStPage.checkTextInReport(driver, "414");
+
 
         }
 
-        @AfterTest
+        @AfterClass(alwaysRun = true)
         public void tearDown ()throws Exception {
             driver.quit();
             String verificationErrorString = verificationErrors.toString();
