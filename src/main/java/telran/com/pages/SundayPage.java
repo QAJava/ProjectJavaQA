@@ -31,6 +31,8 @@ public class SundayPage extends Page {
     @FindBy(id = "orderSum")
     protected WebElement orderSum;
 
+    @FindBy(xpath = "//a")
+    WebElement restart;
 
 
     public SundayPage(WebDriver driver) {
@@ -41,6 +43,11 @@ public class SundayPage extends Page {
 
     public SundayPage openmainPage() {
         driver.get(PAGE_URL);
+        return this;
+    }
+
+    public SundayPage clickRestart(){
+        restart.click();
         return this;
     }
 
