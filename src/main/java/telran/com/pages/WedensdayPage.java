@@ -68,6 +68,9 @@ public class WedensdayPage extends Page {
         return this;
     }
 
+    public void verifyCheckBox(WebDriver driver){
+
+    }
 
 
 }

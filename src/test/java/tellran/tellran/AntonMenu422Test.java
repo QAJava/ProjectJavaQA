@@ -36,11 +36,11 @@ public class AntonMenu422Test {
         mondayPage = PageFactory.initElements(driver, MondayPage.class);
         wedensdayPage = PageFactory.initElements(driver, WedensdayPage.class);
         baseUrl = "https://kontur.ru/Files/userfiles/file/edu/Stagirovka%202012/test/default.html";
+        driver.get(baseUrl);
     }
 
     @Test
     public void testMenu422() throws Exception {
-        driver.get(baseUrl);
         basePage.selectDay("среда");
         wedensdayPage.clickToKasha()
                      .clickToOtbivnaya()
@@ -54,8 +54,7 @@ public class AntonMenu422Test {
 
     @Test
     public void testMenu390() throws Exception {
-        driver.get(baseUrl);
-        basePage.clickToStartOverLink();
+        // basePage.clickToStartOverLink();
         basePage.selectDay("понедельник");
         basePage.clickToMakeOrder();
         basePage.checkThatValidationTextDisplayed("Нельзя сделать пустой заказ!!!");

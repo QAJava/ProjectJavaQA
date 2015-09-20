@@ -9,6 +9,9 @@
       <file url="file://$PROJECT_DIR$/src/test/java/telran/com/WedensdayTest.java" />
       <file url="file://$PROJECT_DIR$/src/main/java/telran/com/pages/HomePage.java" />
       <file url="file://$PROJECT_DIR$/src/test/java/telran/com/TuesdayTest.java" />
+      <file url="file://$PROJECT_DIR$/src/test/java/tellran/YacovMenu968Test.java" />
+      <file url="file://$PROJECT_DIR$/src/test/java/tellran/tellran/AlexPMenu973Test.java" />
+      <file url="file://$PROJECT_DIR$/src/test/java/tellran/tellran/WedensdayTest.java" />
     </excludeFromCompile>
     <resourceExtensions />
     <wildcardResourcePatterns>
